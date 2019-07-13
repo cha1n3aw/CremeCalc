@@ -2,7 +2,7 @@
 #include "errorwindow.h"
 #include "ui_mainwindow.h"
 #include <iostream>
-#include <stack>
+#include <QStack>
 #include <string>
 #include <cmath>
 #include <QKeyEvent>
@@ -10,27 +10,23 @@
 #include <QDebug>
 #include <QPainter>
 #include <QtGui>
-//#include <QApplication>
-//#include <QWidget>
-//#include <QtWidgets>
 
 using namespace std;
 
 double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int opstacksize); //прототип функции для вычисления
 double brackets(double* digitbuffer, char* opbuffer, int digitstacksize, int opstacksize); //прототип функции для выделения выражения внутри скобок
-static stack <double> digitstack; //стек чисел
-static stack <char> opstack; //стек операторов
-bool firewall(string expression);
+static QStack <double> digitstack; //стек чисел
+static QStack <char> opstack; //стек операторов
+void firewall(string expression);
 string stringremover(string expression); //прототип функции чистки строки от пробелов
 void string_parsing(string); //прототип функции парсинга стринга
 double stacktobuffer(); //прототип функции вычислений
-void erase();
+void buttons();
 void write(QString expression);
+void errorwindow();
 static QString buffer;
-static QString substring;
 static bool powstatus = false;
-const int offset_x = 1;
-const int offset_y = 24;
+static bool error = false;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -38,6 +34,51 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
+
+    ui->savedresult->setWordWrap(true);
+    ui->savedhint->setWordWrap(true);
+    ui->history_1->setWordWrap(true);
+    ui->history_2->setWordWrap(true);
+    ui->history_3->setWordWrap(true);
+    ui->history_4->setWordWrap(true);
+    ui->history_5->setWordWrap(true);
+
+    connect(ui->bt0, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bt1, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bt2, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bt3, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bt4, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bt5, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bt6, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bt7, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bt8, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bt9, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btdot, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btpl, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btmin, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btmult, SIGNAL(clicked()), this, SLOT(nondefaultop()));
+    connect(ui->btdiv, SIGNAL(clicked()), this, SLOT(nondefaultop()));
+    connect(ui->btpow, SIGNAL(clicked()), this, SLOT(nondefaultop()));
+    connect(ui->btdel, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btp, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bte, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btopen, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btclose, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btlg, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btln, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btsin, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btcos, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bttan, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btctan, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btclr, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->bteq, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btroot, SIGNAL(clicked()), this, SLOT(nondefaultop()));
+    connect(ui->bt00, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btlog, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->sqroot, SIGNAL(clicked()), this, SLOT(nondefaultop()));
+    connect(ui->btms, SIGNAL(clicked()), this, SLOT(nondefaultop()));
+    connect(ui->btmr, SIGNAL(clicked()), this, SLOT(nondefaultop()));
+    connect(ui->btmc, SIGNAL(clicked()), this, SLOT(nondefaultop()));
 }
 
 MainWindow::~MainWindow()
@@ -45,390 +86,329 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::paintEvent(QPaintEvent *event)
+void MainWindow::buttons()
 {
-          QFont tahoma("MS Sans Serif", 15, QFont::Monospace);
-          event->type();
-          QPainter powdraw(this);
-          QPen powPen(Qt::black, 1, Qt::SolidLine, Qt::FlatCap);
-          powdraw.setFont(tahoma);
-          powdraw.setPen(powPen);
-          powdraw.drawText(offset_x, offset_y, substring);
-          update();
+    QPushButton *button = static_cast<QPushButton*>(sender());
+    write(button->text());
+}
+
+void MainWindow::nondefaultop()
+{
+    QPushButton *button = static_cast<QPushButton*>(sender());
+    QString op = button->text();
+    if (op == "÷") write("/");
+    if (op == "×") write("*");
+    if (op == "²√")
+    {
+        powstatus = true;
+        write("2");
+        powstatus = false;
+        write("r");
+    }
+    if (op == "√") write("r");
+    if (op == "x^ʸ") write("^");
+    if (op == "MS")
+    {
+        int i = buffer.length() - 1;
+        QString temp;
+        while (i >= 0 && buffer[i] != '=')
+        {
+            temp[buffer.length() - 1 - i] = buffer[i];
+            i--;
+        }
+        QString temp1;
+        temp1.resize(temp.length());
+        for (i = 0; i < temp.length(); i++)
+        {
+            temp1[temp1.length() - 1 - i] = temp[i];
+        }
+        ui->savedresult->setText(temp1);
+    }
+    if (op == "MR") write(ui->savedresult->text());
+    if (op == "MC") ui->savedresult->setText("");
+}
+
+void MainWindow::errorwindow()
+{
+    ui->expression->setText("");
+    ui->sublabel->setText("");
+    buffer = "";
+    ErrorWindow errorwindow;
+    errorwindow.setModal(true);
+    errorwindow.exec();
 }
 
 void MainWindow::result ()
 {
+    error = false;
     QString result;
-    //QString to string
     buffer = QString::fromStdString(stringremover(buffer.toLocal8Bit().constData()));
     string expression = buffer.toLocal8Bit().constData();
-    //string to QString
-    //if (firewall(expression) == true)
-    //  {
+    firewall(expression);
+    if (!error)
+    {
             string_parsing(expression);
             result = QString::fromStdString(to_string(stacktobuffer()));
-     // }
-    //else
-      //{
-         //   ui->expression->setText("");
-      //      substring = "";
-      //      buffer = "";
-     //       update();
-     //       ErrorWindow errorwindow;
-     //       errorwindow.setModal(true);
-     //       errorwindow.exec();
-     // }
-    int i=result.length() - 1;
-    while (result[i] == '0' && i>0)
-    {
-       if (result[i-1] == '.') result.resize(i-1);
-        else result.resize(i);
-       i--;
+            if(!error)
+            {
+                int i=result.length() - 1;
+                while (result[i] == '0' && i>0)
+                {
+                   if (result[i-1] == '.') result.resize(i-1);
+                    else result.resize(i);
+                   i--;
+                }
+                buffer = buffer + "=" + result;
+                ui->expression->setText(ui->expression->text() + "=" + result);
+                ui->history_5->setText(ui->history_4->text());
+                ui->history_4->setText(ui->history_3->text());
+                ui->history_3->setText(ui->history_2->text());
+                ui->history_2->setText(ui->history_1->text());
+                ui->history_1->setText(result);
+            }
+            else errorwindow();
     }
-    if (buffer != "invalid") ui->expression->setText(ui->expression->text() + " = " + result);
-
+    else errorwindow();
 }
 
 void MainWindow::write(QString action)
 {
-    if (action == "delete")
+    switch (action.toLocal8Bit().constData()[0])
     {
-       // qDebug() << "buffer " << buffer;
-      //  qDebug() << "buffer length " << buffer.length();
-        if (buffer[buffer.length() - 1] == '^')
+    case '-': powstatus = false;
+        break;
+    case '+': powstatus = false;
+        break;
+    case '/': powstatus = false;
+        break;
+    case '*': powstatus = false;
+        break;
+    case 'C': powstatus = false;
+        break;
+    case '^': powstatus = true;
+        break;
+    case '=': result();
+        break;
+    default:
         {
-            buffer.resize(buffer.length() - 1);
-            powstatus = false;
-        }
-        else
-        {
-            buffer.resize(buffer.length() - 1);
-            substring.resize(substring.length() - 1);
-            QString text = ui->expression->text();
-            text.resize(text.length() - 1);
-            ui->expression->setText(text);
-            update();
+           if (action == "r")
+           {
+               QString text = ui->expression->text();
+               QString rootpow = ui->sublabel->text();
+               int i = buffer.length() - 1;
+               while (i >= 0 && buffer[i] != '+'
+                      && buffer[i] != '+'
+                      && buffer[i] != '-'
+                      && buffer[i] != '*'
+                      && buffer[i] != '/'
+                      && buffer[i] != '^')
+                   {
+                       text[i] = QChar(0x2007);
+                       rootpow[i] = buffer[i];
+                       ui->sublabel->setText(rootpow);
+                       ui->expression->setText(text);
+                       update();
+                       i--;
+                   }
+           }
         }
     }
-    else
+    if (action != "=")
     {
-        if (action == "erase")
+        if (action == "⌫")
         {
-            buffer = "";
-            substring = "";
-            ui->expression->setText("");
-            powstatus = false;
-            update();
+            if (buffer.length() != 0)
+            {
+                if (buffer[buffer.length() - 1] == '^')
+                {
+                    buffer.resize(buffer.length() - 1);
+                    powstatus = false;
+                }
+                else
+                {
+                    buffer.resize(buffer.length() - 1);
+                    QString text = ui->expression->text();
+                    text.resize(text.length() - 1);
+                    ui->expression->setText(text);
+                    text = ui->sublabel->text();
+                    text.resize(text.length() - 1);
+                    ui->sublabel->setText(text);
+                    update();
+                }
+            }
         }
         else
-            if (powstatus == false)
+        {
+            if (action == "C")
             {
-                        if (action != "√")
+                buffer = "";
+                ui->sublabel->setText("");
+                ui->expression->setText("");
+                powstatus = false;
+                update();
+            }
+            else
+            {
+                if (powstatus == false)
+                {
+                    if (action == "r")
+                    {
+                        buffer = buffer + "r";
+                        ui->expression->setText(ui->expression->text() + "√");
+                        ui->sublabel->setText(ui->sublabel->text() + QChar(0x2007));
+                        update();
+                    }
+                    else
+                    {
+                        if (action == "*")
                         {
-                            buffer = buffer + action;
-                            ui->expression->setText(ui->expression->text() + action);
-                            substring = substring + QChar(0x2007); //QChar(0x2001) + QChar(0x2001)
+                            buffer = buffer + "*";
+                            ui->expression->setText(ui->expression->text() + "×");
+                            ui->sublabel->setText(ui->sublabel->text() + QChar(0x2007));
                             update();
                         }
                         else
                         {
-                            buffer = buffer + "r";
-                            ui->expression->setText(ui->expression->text() + action);
-                            substring = substring + QChar(0x2007); //QChar(0x2001) + QChar(0x2001)
-                            update();
+                            if (action == "/")
+                            {
+                                buffer = buffer + "/";
+                                ui->expression->setText(ui->expression->text() + "÷");
+                                ui->sublabel->setText(ui->sublabel->text() + QChar(0x2007));
+                                update();
+                            }
+                            else
+                            {
+                                if (action == "(" || action == ")" || action == "-")
+                                {
+                                    ui->sublabel->setText(ui->sublabel->text() + QChar(0x2004));
+                                    buffer = buffer + action;
+                                    ui->expression->setText(ui->expression->text() + action);
+                                    update();
+                                }
+                                else
+                                {
+                                    buffer = buffer + action;
+                                    ui->expression->setText(ui->expression->text() + action);
+                                    ui->sublabel->setText(ui->sublabel->text() + QChar(0x2007));
+                                    update();
+                                }
+                            }
                         }
-            }
-            else
-            {
-                if(action != "^")
-                {
-                    buffer = buffer + action;
-                    substring = substring + action;
-                    ui->expression->setText(ui->expression->text() + QChar(0x2007)); //QChar(0x2001) + QChar(0x2001)
-                    update();
+                    }
                 }
                 else
                 {
-                    buffer = buffer + action;
-                    update();
+                    if(action != "^")
+                    {
+                        buffer = buffer + action;
+                        ///////////////////////////
+                        ui->sublabel->setText(ui->sublabel->text() + action);
+                       // substring = substring + action;
+                        ui->expression->setText(ui->expression->text() + QChar(0x2007)); //QChar(0x2001) + QChar(0x2001)
+                        update();
+                    }
+                    else
+                    {
+                        buffer = buffer + action;
+                        update();
+                    }
                 }
             }
+        }
     }
-   // qDebug() << "buffer reworked " << buffer;
-   // qDebug() << "buffer reworked length " << buffer.length();
-}
-
-void MainWindow::drawroot(int xs, int xe)
-{
-    QPainter painter(this);
-    QPen myPen(Qt::black, 2, Qt::SolidLine, Qt::FlatCap);
-    painter.setPen(myPen);
-    painter.drawLine(offset_x + xs, offset_y - 20, offset_x + xs + 10, offset_y);
-    painter.drawLine(offset_x + xs + 10, offset_y, offset_x + xs + 20, offset_y - 30);
-    painter.drawLine(offset_x + xs + 20, offset_y - 30, offset_x + xe, offset_y - 30);
-}
-
-void MainWindow::erase()
-{
-    write("delete");
-}
-
-void MainWindow::on_bt1_clicked()
-{
-  // buffer = buffer + "1"; update();
-    write("1");
-}
-
-void MainWindow::on_bt2_clicked()
-{
-    write("2");
-}
-
-void MainWindow::on_bt3_clicked()
-{
-    write("3");
-}
-
-void MainWindow::on_bt4_clicked()
-{
-    write("4");
-}
-
-void MainWindow::on_bt5_clicked()
-{
-    write("5");
-}
-
-void MainWindow::on_bt6_clicked()
-{
-    write("6");
-}
-
-void MainWindow::on_bt7_clicked()
-{
-    write("7");
-}
-
-void MainWindow::on_bt8_clicked()
-{
-    write("8");
-}
-
-void MainWindow::on_bt9_clicked()
-{
-    write("9");
-}
-
-void MainWindow::on_bt0_clicked()
-{
-    write("0");
-}
-
-void MainWindow::on_btdot_clicked()
-{
-    write(".");
-}
-
-void MainWindow::on_btpl_clicked()
-{
-    powstatus = false;
-    write("+");
-}
-
-void MainWindow::on_btmin_clicked()
-{
-    powstatus = false;
-    write("-");
-}
-
-void MainWindow::on_btmult_clicked()
-{
-    powstatus = false;
-    write("*");
-}
-
-void MainWindow::on_btdiv_clicked()
-{
-    powstatus = false;
-    write("/");
-}
-
-void MainWindow::on_btpow_clicked()
-{
-    powstatus = true;
-    write("^");
-}
-
-void MainWindow::on_btroot_clicked()
-{
-    write("√");
-}
-
-void MainWindow::on_btp_clicked()
-{
-    write("pi");
-}
-
-void MainWindow::on_bte_clicked()
-{
-    write("exp");
-}
-
-void MainWindow::on_btclr_clicked()
-{
-    powstatus = false;
-    write("erase");
-}
-
-void MainWindow::on_btdel_clicked()
-{
-    write("delete");
-}
-
-void MainWindow::on_btopen_clicked()
-{
-    write("(");
-}
-
-void MainWindow::on_btclose_clicked()
-{
-   write(")");
-}
-
-void MainWindow::on_btlog_clicked()
-{
-    write("log");
-}
-
-void MainWindow::on_btln_clicked()
-{
-    write("ln");
-}
-
-void MainWindow::on_btsin_clicked()
-{
-    write("sin");
-}
-
-void MainWindow::on_btcos_clicked()
-{
-    write("cos");
-}
-
-void MainWindow::on_bttan_clicked()
-{
-    write("tan");
-}
-
-void MainWindow::on_btctan_clicked()
-{
-    write("ctan");
-}
-
-void MainWindow::on_sqroot_clicked()
-{
-    powstatus = true;
-    write("2");
-    powstatus = false;
-    write("√");
-}
-
-void MainWindow::on_btms_clicked()
-{
-    ui->savedresult->setText(buffer); update();
-}
-
-void MainWindow::on_btmr_clicked()
-{
-    buffer = buffer + ui->savedresult->text(); update();
-}
-
-void MainWindow::on_btmc_clicked()
-{
-    ui->savedresult->setText(""); update();
-}
-
-void MainWindow::on_bteq_clicked()
-{
-    result(); update();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *pressedkey)
 {
     switch (pressedkey->key())
     {
-    case Qt::Key_1: buffer = buffer + "1"; update();
+    case Qt::Key_1: write("1");
         break;
-    case Qt::Key_2: buffer = buffer + "2"; update();
+    case Qt::Key_2: write("2");
         break;
-    case Qt::Key_3: buffer = buffer + "3"; update();
+    case Qt::Key_3: write("3");
         break;
-    case Qt::Key_4: buffer = buffer + "4"; update();
+    case Qt::Key_4: write("4");
         break;
-    case Qt::Key_5: buffer = buffer + "5"; update();
+    case Qt::Key_5: write("5");
         break;
-    case Qt::Key_6: buffer = buffer + "6"; update();
+    case Qt::Key_6: write("6");
         break;
-    case Qt::Key_7: buffer = buffer + "7"; update();
+    case Qt::Key_7: write("7");
         break;
-    case Qt::Key_8: buffer = buffer + "8"; update();
+    case Qt::Key_8: write("8");
         break;
-    case Qt::Key_9: buffer = buffer + "9"; update();
+    case Qt::Key_9: write("9");
         break;
-    case Qt::Key_0: buffer = buffer + "0"; update();
+    case Qt::Key_0: write("0");
         break;
-    case Qt::Key_Minus: buffer = buffer + "-"; update();
+    case Qt::Key_Minus: powstatus = false; write("-");
         break;
-    case Qt::Key_Plus: buffer = buffer + "+"; update();
+    case Qt::Key_Plus: powstatus = false; write("+");
         break;
-    case Qt::Key_Slash: buffer = buffer + "/"; update();
+    case Qt::Key_Slash: powstatus = false; write("/");
         break;
-    case Qt::Key_Asterisk: buffer = buffer + "*"; update();
+    case Qt::Key_Asterisk: powstatus = false; write("×");
         break;
-    case Qt::Key_Equal: result(); update();
+    case Qt::Key_Equal: result();
         break;
-    case Qt::Key_Backspace: erase();
+    case Qt::Key_Backspace: write("delete");
         break;
-    case Qt::Key_Space: buffer = buffer + " "; update();
+    case Qt::Key_S: write("sin");
         break;
-    case Qt::Key_S: buffer = buffer + "sin"; update();
+    case Qt::Key_C: write("cos");
         break;
-    case Qt::Key_C: buffer = buffer + "cos"; update();
+    case Qt::Key_T: write("tan");
         break;
-    case Qt::Key_T: buffer = buffer + "tan"; update();
+    case Qt::Key_E: write("exp");
         break;
-    case Qt::Key_E: buffer = buffer + "exp"; update();
+    case Qt::Key_P: write("pi");
         break;
-    case Qt::Key_P: buffer = buffer + "pi"; update();
+    case Qt::Key_Period: write(".");
         break;
-    case Qt::Key_Period: buffer = buffer + "."; update();
+    case Qt::Key_AsciiCircum: powstatus = true; write("^");
         break;
-    case Qt::Key_AsciiCircum: buffer = buffer + "^"; update();
+    case Qt::Key_BracketLeft: write("(");
         break;
-    case Qt::Key_BracketLeft: buffer = buffer + "("; update();
+    case Qt::Key_BracketRight: write(")");
         break;
-    case Qt::Key_BracketRight: buffer = buffer + ")"; update();
+    case Qt::Key_Return: result();
         break;
-    case Qt::Key_Return: result(); update();
-        break;
-    case Qt::Key_Delete: buffer.resize(0); update();
-        break;
-    case Qt::Key_M: ui->savedresult->setText(buffer); update();
-        break;
-    case Qt::Key_R: buffer = buffer + ui->savedresult->text(); update();
+    case Qt::Key_Delete: write("erase");
         break;
     }
 }
 
-bool firewall(string expression)
+void firewall(string expression)
 {
-    bool prevdot = false; //это объявление
+    bool prevdot = false;
     bool prevop = false;
     int open = 0;
     int close = 0;
+    if (expression[0] == '+'
+        || expression[0] == '-'
+        || expression[0] == '*'
+        || expression[0] == '/'
+        || expression[0] == '^'
+        || expression[0] == 'r'
+        || expression[expression.length() - 1] == '+'
+        || expression[expression.length() - 1] == '-'
+        || expression[expression.length() - 1] == '*'
+        || expression[expression.length() - 1] == '/'
+        || expression[expression.length() - 1] == '^'
+        || expression[expression.length() - 1] == 'r'
+        || (expression[0] == 'l' && expression[1] == 'o' && expression[2] == 'g'))
+    {
+        error = true;
+    }
     for (unsigned long long i = 0; i < expression.length(); i++)
     {
+        if (isdigit(expression[i]))
+        {
+            if (i < expression.length() && expression[i + 1] == '(') error = true;
+            prevop = false;
+            continue;
+        }
         if (expression[i] == '(')
         {
             prevop = false;
@@ -441,40 +421,31 @@ bool firewall(string expression)
             close++;
             continue;
         }
-
         if (expression[i] == '.')
         {
-            if (prevdot == true) return false;
+            if (prevdot == true) error = true;
             else
             {
                 prevdot = true;
                 prevop = true;
-                continue;
             }
-        }
-        if (isdigit(expression[i]))
-        {
-            if (i < expression.length() && (expression[i + 1] == '(' || expression[i + 1] == ')')) return false;
-            else prevop = false;
             continue;
         }
         if (expression[i] == '+'
-            && expression[i] == '-'
-            && expression[i] == '*'
-            && expression[i] == '/'
-            && expression[i] == '^')
+            || expression[i] == '-'
+            || expression[i] == '*'
+            || expression[i] == '/'
+            || expression[i] == '^'
+            || expression[i] == 'r')
         {
-            if (prevop == true) return false;
-            else
-                {
-                 prevop = true;
-                 return true;
-                }
+            if (i < expression.length() && expression[i + 1] == ')') error = true;
+            if (prevop == true) error = true;
+            else prevop = true;
+            continue;
         }
 
     }
-    if (open == close) return true;
-    else return false;
+    if (open != close) error = true;
 }
 
 string stringremover(string expression)
@@ -499,7 +470,19 @@ string stringremover(string expression)
             i--;
         }
     }
-
+    for (unsigned long i = 0; i < expression.length() - 1; i++)
+    {
+        if (expression[i] == '(' && (expression[i + 1] == '-' || expression[i + 1] == '+'))
+        {
+                expression.resize(expression.length() + 1);
+                for (unsigned long long c = expression.length(); c > i; c--)
+                {
+                    expression[c] = expression [c - 1];
+                }
+                expression[i + 1] = '0';
+                break;
+        }
+    }
     return expression;
 }
 
@@ -510,6 +493,19 @@ double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int 
     for (i = 0; i < opstacksize; i++)
     {
         if (opbuffer[i] == 'l')
+        {
+            digitbuffer[i] = log(digitbuffer[i+1])/log(digitbuffer[i]);
+            for (c = i; c < opstacksize - 1; c++)
+            {
+                digitbuffer[c + 1] = digitbuffer[c + 2];
+                opbuffer[c] = opbuffer[c + 1];
+            }
+            digitstacksize--;
+            opstacksize--;
+            i--;
+            continue;
+        }
+        if (opbuffer[i] == 'g')
         {
             digitbuffer[i] = log10(digitbuffer[i+1]);
             for (c = i; c < opstacksize - 1; c++)
@@ -563,29 +559,37 @@ double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int 
         }
         if (opbuffer[i] == 't')
         {
-            digitbuffer[i] = tan(digitbuffer[i+1]*(atan(1.0) * 4)/180);
-            for (c = i; c < opstacksize - 1; c++)
+            if (digitbuffer[i+1] != 90.0 && digitbuffer[i+1] != 270.0)
             {
-                digitbuffer[c + 1] = digitbuffer[c + 2];
-                opbuffer[c] = opbuffer[c + 1];
+                digitbuffer[i] = tan(digitbuffer[i+1]*(atan(1.0) * 4)/180);
+                for (c = i; c < opstacksize - 1; c++)
+                {
+                    digitbuffer[c + 1] = digitbuffer[c + 2];
+                    opbuffer[c] = opbuffer[c + 1];
+                }
+                digitstacksize--;
+                opstacksize--;
+                i--;
+                continue;
             }
-            digitstacksize--;
-            opstacksize--;
-            i--;
-            continue;
+            else error = true;
         }
         if (opbuffer[i] == 'k')
         {
-            digitbuffer[i] = 1/(tan(digitbuffer[i+1]*(atan(1.0) * 4)/180));
-            for (c = i; c < opstacksize - 1; c++)
+            if (digitbuffer[i+1] != 0.0 && digitbuffer[i+1] != 180.0 && digitbuffer[i+1] != 360.0)
             {
-                digitbuffer[c + 1] = digitbuffer[c + 2];
-                opbuffer[c] = opbuffer[c + 1];
+                digitbuffer[i] = 1/(tan(digitbuffer[i+1]*(atan(1.0) * 4)/180));
+                for (c = i; c < opstacksize - 1; c++)
+                {
+                    digitbuffer[c + 1] = digitbuffer[c + 2];
+                    opbuffer[c] = opbuffer[c + 1];
+                }
+                digitstacksize--;
+                opstacksize--;
+                i--;
+                continue;
             }
-            digitstacksize--;
-            opstacksize--;
-            i--;
-            continue;
+            else error = true;
         }
     }
 
@@ -606,16 +610,20 @@ double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int 
         }
         if (opbuffer[i] == 'r')
         {
-            digitbuffer[i] = pow(digitbuffer[i+1], 1 / digitbuffer[i]);
-            for (c = i; c < opstacksize - 1; c++)
+            if (digitbuffer[i + 1] >= 0)
             {
-                digitbuffer[c + 1] = digitbuffer[c + 2];
-                opbuffer[c] = opbuffer[c + 1];
+                digitbuffer[i] = pow(digitbuffer[i+1], 1 / digitbuffer[i]);
+                for (c = i; c < opstacksize - 1; c++)
+                {
+                    digitbuffer[c + 1] = digitbuffer[c + 2];
+                    opbuffer[c] = opbuffer[c + 1];
+                }
+                digitstacksize--;
+                opstacksize--;
+                i--;
+                continue;
             }
-            digitstacksize--;
-            opstacksize--;
-            i--;
-            continue;
+            else error = true;
         }
     }
 
@@ -636,16 +644,20 @@ double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int 
         }
         if (opbuffer[i] == '/')
         {
-            digitbuffer[i] = digitbuffer[i] / digitbuffer[i + 1];
-            for (c = i; c < opstacksize - 1; c++)
+            if (digitbuffer[i+1] != 0.0)
             {
-                digitbuffer[c + 1] = digitbuffer[c + 2];
-                opbuffer[c] = opbuffer[c + 1];
+                digitbuffer[i] = digitbuffer[i] / digitbuffer[i + 1];
+                for (c = i; c < opstacksize - 1; c++)
+                {
+                    digitbuffer[c + 1] = digitbuffer[c + 2];
+                    opbuffer[c] = opbuffer[c + 1];
+                }
+                digitstacksize--;
+                opstacksize--;
+                i--;
+                continue;
             }
-            digitstacksize--;
-            opstacksize--;
-            i--;
-            continue;
+            else error = true;
         }
     }
 
@@ -683,37 +695,11 @@ double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int 
 
 void string_parsing(string expression)
 {
-    //string root = "√";
     unsigned long long i = 0; //переменная для счетчика
     double number = 0; //число которое записывается в стек
     double fraction = 1; //счетчик десятичной дроби в числе
-    if (expression[0] == '-') //на случай в начале будет -
-    {
-        expression.resize(expression.length() + 1);
-        for (i = expression.length(); i > 0; i--)
-        {
-            expression[i] = expression[i - 1]; //стринг увеличивается и сдвигается на 1 позицию
-        }
-        expression[0] = '0'; //а в нулевую записывается 0
-    }
     for (i = 0; i < expression.length(); i++)
     {
-        if ((expression[i] == 'l' || expression[i] == 'L') && (expression[i+1] == 'o' || expression[i+1] == 'O') && (expression[i+2] == 'g' || expression[i+2] == 'G'))
-        {
-            digitstack.push(0);
-            opstack.push('l');
-            fraction = 1;
-            i+=2;
-            continue;
-        }
-        if ((expression[i] == 'l' || expression[i] == 'L') && (expression[i+1] == 'n' || expression[i+1] == 'N'))
-        {
-            digitstack.push(0);
-            opstack.push('n');
-            fraction = 1;
-            i++;
-            continue;
-        }
         if ((expression[i] == 'e' || expression[i] == 'E') && (expression[i+1] == 'x' || expression[i+1] == 'X') && (expression[i+2] == 'p' || expression[i+2] == 'P'))
         {
             digitstack.push(exp(1));
@@ -726,65 +712,176 @@ void string_parsing(string expression)
             i++;
             continue;
         }
+        if ((expression[i] == 'l' || expression[i] == 'L') && (expression[i+1] == 'o' || expression[i+1] == 'O') && (expression[i+2] == 'g' || expression[i+2] == 'G'))
+        {
+            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 's' && expression[i+3] != 'c' && expression[i+3] != 't')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                if (!isdigit(expression[i-1]) && expression[i+3] != ')')
+                {
+                    error = true;
+                    break;
+                }
+                else
+                {
+                    opstack.push('l');
+                    fraction = 1;
+                    i+=2;
+                    continue;
+                }
+            }
+        }
+        if ((expression[i] == 'l' || expression[i] == 'L') && (expression[i+1] == 'g' || expression[i+1] == 'G'))
+        {
+            if (!isdigit(expression[i+2]) && expression[i+2] != 'e' && expression[i+2] != 'p' && expression[i+2] != '(' && expression[i+2] != 's' && expression[i+2] != 'c' && expression[i+2] != 't')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('g');
+                fraction = 1;
+                i++;
+                continue;
+            }
+        }
+        if ((expression[i] == 'l' || expression[i] == 'L') && (expression[i+1] == 'n' || expression[i+1] == 'N'))
+        {
+            if (!isdigit(expression[i+2]) && expression[i+2] != 'e' && expression[i+2] != 'p' && expression[i+2] != '(' && expression[i+2] != 's' && expression[i+2] != 'c' && expression[i+2] != 't')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('n');
+                fraction = 1;
+                i++;
+                continue;
+            }
+        }
         if ((expression[i] == 's' || expression[i] == 'S') && (expression[i+1] == 'i' || expression[i+1] == 'I') && (expression[i+2] == 'n' || expression[i+2] == 'N'))
         {
-            digitstack.push(0);
-            opstack.push('s');
-            fraction = 1;
-            i+=2;
-            continue;
+            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 'l')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('s');
+                fraction = 1;
+                i+=2;
+                continue;
+            }
         }
         if ((expression[i] == 'c' || expression[i] == 'C') && (expression[i+1] == 'o' || expression[i+1] == 'O') && (expression[i+2] == 's' || expression[i+2] == 'S'))
         {
-            digitstack.push(0);
-            opstack.push('c');
-            fraction = 1;
-            i+=2;
-            continue;
+            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 'l')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('c');
+                fraction = 1;
+                i+=2;
+                continue;
+            }
         }
-        if ((expression[i] == 't' || expression[i] == 'T') && (expression[i+1] == 'a' || expression[i+1] == 'A') && (expression[i+2] == 'n' || expression[i+2] == 'N'))
+        if ((expression[i] == 't' || expression[i] == 'T') && (expression[i+1] == 'g' || expression[i+1] == 'G'))
         {
-            digitstack.push(0);
-            opstack.push('t');
-            fraction = 1;
-            i+=2;
-            continue;
+            if (!isdigit(expression[i+2]) && expression[i+2] != 'e' && expression[i+2] != 'p' && expression[i+2] != '(' && expression[i+2] != 'l')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('t');
+                fraction = 1;
+                i++;
+                continue;
+            }
         }
-        if ((expression[i] == 'c' || expression[i] == 'C') && (expression[i+1] == 't' || expression[i+1] == 'T') && (expression[i+2] == 'a' || expression[i+2] == 'A') && (expression[i+3] == 'n' || expression[i+3] == 'N'))
+        if ((expression[i] == 'c' || expression[i] == 'C') && (expression[i+1] == 't' || expression[i+1] == 'T') && (expression[i+2] == 'g' || expression[i+2] == 'G'))
         {
-            digitstack.push(0);
-            opstack.push('k');
-            fraction = 1;
-            i+=3;
-            continue;
+            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 'l')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('k');
+                fraction = 1;
+                i+=2;
+                continue;
+            }
         }
         if (expression[i] == 'r')
         {
-            opstack.push('r');
-            fraction = 1;
-            continue;
+            if (!isdigit(expression[i-1]) && expression[i-1] != ')')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                if (!isdigit(expression[i+1]) && expression[i+1] != 'e' && expression[i+1] != 'p' && expression[i+1] != '(')
+                {
+                    error = true;
+                    break;
+                }
+                else
+                {
+                    opstack.push('r');
+                    fraction = 1;
+                    continue;
+                }
+            }
         }
-        if ((expression[i] == 's' || expression[i] == 'S') && (expression[i+1] == 'q' || expression[i+1] == 'Q') && (expression[i+2] == 'r' || expression[i+2] == 'R') && (expression[i+3] == 't' || expression[i+3] == 'T'))
+        if (expression[i] == '(')
         {
-            digitstack.push(2);
-            opstack.push('r');
-            fraction = 1;
-            i+=3;
-            continue;
+            if (expression[i+1] == ')')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push(expression[i]);
+                fraction = 1;
+                continue;
+            }
         }
-        if ((expression[i] == 'r' || expression[i] == 'R') && (expression[i+1] == 'o' || expression[i+1] == 'O') && (expression[i+2] == 'o' || expression[i+2] == 'O') && (expression[i+3] == 't' || expression[i+3] == 'T'))
+        if (expression[i] == ')')
         {
-            opstack.push('r');
-            fraction = 1;
-            i+=3;
-            continue;
-        }
-        if (expression[i] == '(' || expression[i] == ')')
-        {
-            digitstack.push(0);
-            opstack.push(expression[i]);
-            fraction = 1;
-            continue;
+            if (expression[i+1] == '(')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push(expression[i]);
+                fraction = 1;
+                continue;
+            }
         }
         if (expression[i] != '.' && !isalpha(expression[i]) && !isdigit(expression[i]))
         {
@@ -897,93 +994,6 @@ void string_parsing(string expression)
             else break;
         }
         result = calculation(digitbuffer, opbuffer, digitstacksize, opstacksize);
-        qDebug() << "result = " << result;
+        qDebug() << "result =" << result;
         return(result);
     }
-/*
-
-
-
-
-//QPixmap pi;
-//  QPainter p(&pi);
-//  p.setRenderHint(QPainter::Antialiasing);
-//  p.setPen(QPen(Qt::black, 12, Qt::DashDotLine, Qt::RoundCap));
-//  p.drawLine(0, 0, 200, 200);
-//    p.end(); // Don't forget this line!
-/////////////////////
-//QLabel l;
-//ui->history1->setPixmap(pi);
-//l.show();
-//drawroot(10, 1000);
-
-
-
-
-   // QPainter painter(this); //create a QPainter and pass a pointer to the device.
-                            //A paint device can be a QWidget, a QPixmap or a QImage
-    // painter.drawLine(100,100,100,1000); //a simple line
-    //create a black pen that has solid line and the width is 2.
-   // QPen myPen(Qt::black, 2, Qt::SolidLine, Qt::FlatCap);
-    //painter.setPen(myPen);
-   // drawroot(expression_length, expression_length + 30);
-    //expression_length += 30;
-   // drawroot(100, 130);
-   // drawroot(150, 200);
-    //drawline(100, 100);
-
-    //draw a point
-   // myPen.setColor(Qt::black);
-  //  myPen.setWidth(5);
-   // painter.setPen(myPen);
-  //  painter.drawPoint(90,200);
-    //painter.drawText(myPen, "5");
-    //draw a polygon
-   // QPolygon polygon;
-   // polygon << QPoint(130, 140) << QPoint(180, 170)
-   //          << QPoint(180, 140) << QPoint(220, 110)
-   //          << QPoint(140, 100);
-   //  painter.drawPolygon(polygon);
-
-     //draw an ellipse
-     //The setRenderHint() call enables antialiasing, telling QPainter to use different
-     //color intensities on the edges to reduce the visual distortion that normally
-     //occurs when the edges of a shape are converted into pixels
-    // painter.setRenderHint(QPainter::Antialiasing, true);
-    // painter.setPen(QPen(Qt::black, 3, Qt::DashDotLine, Qt::RoundCap));
-    // painter.setBrush(QBrush(Qt::green, Qt::SolidPattern));
-    // painter.drawEllipse(200, 80, 400, 240);
-
-
-   // myPen.setWidth(2);
-   // painter.setPen(myPen);
-  //  QPoint baseline(100, 90);
-  //  painter.drawText(baseline, "12345");
-bool isoperator()
-{
-    string root = "√";
-    if (!isdigit(buffer.toLocal8Bit().constData()[buffer.length()])
-        && !isalpha(buffer.toLocal8Bit().constData()[buffer.length()])
-        && buffer[buffer.length()] != '.'
-        && buffer[buffer.length()] != '+'
-        && buffer[buffer.length()] != '-'
-        && buffer[buffer.length()] != '*'
-        && buffer[buffer.length()] != '/'
-        && buffer[buffer.length()] != '^'
-        && buffer[buffer.length()] != '('
-        && buffer[buffer.length()] != ')'
-        && buffer[buffer.length()] != root[0]
-        && (buffer[buffer.length() - 1] != 'l' && buffer[buffer.length()] != 'n')
-        && (buffer[buffer.length() - 2] != 's' && buffer[buffer.length() - 1] != 'i' && buffer[buffer.length()] != 'n') //sin
-        && (buffer[buffer.length() - 2] != 'c' && buffer[buffer.length() - 1] != 'o' && buffer[buffer.length()] != 's') //cos
-        && (buffer[buffer.length() - 2] != 'l' && buffer[buffer.length() - 1] != 'o' && buffer[buffer.length()] != 'g') //log
-        && (buffer[buffer.length() - 2] != 't' && buffer[buffer.length() - 1] != 'a' && buffer[buffer.length()] != 'n') //tan
-        && (buffer[buffer.length() - 3] != 'c' && buffer[buffer.length() - 2] != 't' && buffer[buffer.length() - 1] != 'a' && buffer[buffer.length()] != 'n') //ctan
-        && (buffer[buffer.length() - 3] != 's' && buffer[buffer.length() - 2] != 'q' && buffer[buffer.length() - 1] != 'r' && buffer[buffer.length()] != 't')) //sqrt
-        return false;
-    else
-        return true;
-}
-
-
-*/

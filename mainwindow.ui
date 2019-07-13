@@ -6,22 +6,68 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>241</width>
-    <height>323</height>
+    <width>462</width>
+    <height>259</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+  background-color:#333333;
+  border: 0px solid gray;
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="bt1">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>90</y>
-      <width>41</width>
-      <height>41</height>
+      <x>50</x>
+      <y>48</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>1</string>
@@ -30,11 +76,50 @@
    <widget class="QPushButton" name="bt2">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>90</y>
-      <width>41</width>
-      <height>41</height>
+      <x>90</x>
+      <y>48</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>2</string>
@@ -43,11 +128,50 @@
    <widget class="QPushButton" name="bt3">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>90</y>
-      <width>41</width>
-      <height>41</height>
+      <x>130</x>
+      <y>48</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>3</string>
@@ -56,11 +180,50 @@
    <widget class="QPushButton" name="bt4">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>130</y>
-      <width>41</width>
-      <height>41</height>
+      <x>50</x>
+      <y>88</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>4</string>
@@ -69,11 +232,50 @@
    <widget class="QPushButton" name="bt5">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>130</y>
-      <width>41</width>
-      <height>41</height>
+      <x>90</x>
+      <y>88</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>5</string>
@@ -82,11 +284,50 @@
    <widget class="QPushButton" name="bt6">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>130</y>
-      <width>41</width>
-      <height>41</height>
+      <x>130</x>
+      <y>88</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>6</string>
@@ -95,11 +336,50 @@
    <widget class="QPushButton" name="bt7">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>170</y>
-      <width>41</width>
-      <height>41</height>
+      <x>50</x>
+      <y>128</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>7</string>
@@ -108,11 +388,50 @@
    <widget class="QPushButton" name="bt8">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>170</y>
-      <width>41</width>
-      <height>41</height>
+      <x>90</x>
+      <y>128</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>8</string>
@@ -121,11 +440,50 @@
    <widget class="QPushButton" name="bt9">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>170</y>
-      <width>41</width>
-      <height>41</height>
+      <x>130</x>
+      <y>128</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>9</string>
@@ -134,11 +492,50 @@
    <widget class="QPushButton" name="bt0">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>210</y>
-      <width>41</width>
-      <height>41</height>
+      <x>90</x>
+      <y>168</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>0</string>
@@ -147,11 +544,49 @@
    <widget class="QPushButton" name="bteq">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>210</y>
-      <width>41</width>
-      <height>81</height>
+      <x>10</x>
+      <y>208</y>
+      <width>120</width>
+      <height>40</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#91835a;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed
+{
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>=</string>
@@ -160,11 +595,50 @@
    <widget class="QPushButton" name="btpl">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>210</y>
-      <width>41</width>
-      <height>41</height>
+      <x>170</x>
+      <y>128</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>+</string>
@@ -173,11 +647,50 @@
    <widget class="QPushButton" name="btmin">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>250</y>
-      <width>41</width>
-      <height>41</height>
+      <x>170</x>
+      <y>168</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>-</string>
@@ -186,50 +699,206 @@
    <widget class="QPushButton" name="btmult">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>130</y>
-      <width>41</width>
-      <height>41</height>
+      <x>210</x>
+      <y>128</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
+    </property>
     <property name="text">
-     <string>*</string>
+     <string>×</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btdiv">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>170</y>
-      <width>41</width>
-      <height>41</height>
+      <x>210</x>
+      <y>168</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
+    </property>
     <property name="text">
-     <string>/</string>
+     <string>÷</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btpow">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>90</y>
-      <width>41</width>
-      <height>41</height>
+      <x>170</x>
+      <y>48</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
+    </property>
     <property name="text">
-     <string>^</string>
+     <string>x^ʸ</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btroot">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>90</y>
-      <width>41</width>
-      <height>41</height>
+      <x>170</x>
+      <y>88</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>√</string>
@@ -238,11 +907,50 @@
    <widget class="QPushButton" name="btp">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>250</y>
-      <width>41</width>
-      <height>41</height>
+      <x>250</x>
+      <y>208</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>pi</string>
@@ -251,11 +959,50 @@
    <widget class="QPushButton" name="btdot">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>210</y>
-      <width>41</width>
-      <height>41</height>
+      <x>130</x>
+      <y>168</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>.</string>
@@ -264,11 +1011,50 @@
    <widget class="QPushButton" name="bte">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>250</y>
-      <width>41</width>
-      <height>41</height>
+      <x>210</x>
+      <y>208</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>exp</string>
@@ -277,11 +1063,49 @@
    <widget class="QPushButton" name="btclr">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>50</y>
-      <width>41</width>
-      <height>41</height>
+      <x>10</x>
+      <y>168</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#91835a;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed
+{
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>C</string>
@@ -290,11 +1114,49 @@
    <widget class="QPushButton" name="btsin">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>130</y>
-      <width>41</width>
-      <height>41</height>
+      <x>290</x>
+      <y>88</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#91835a;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed
+{
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>sin</string>
@@ -303,11 +1165,49 @@
    <widget class="QPushButton" name="btcos">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>130</y>
-      <width>41</width>
-      <height>41</height>
+      <x>290</x>
+      <y>128</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#91835a;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed
+{
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>cos</string>
@@ -316,37 +1216,153 @@
    <widget class="QPushButton" name="bttan">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>170</y>
-      <width>41</width>
-      <height>41</height>
+      <x>290</x>
+      <y>168</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#91835a;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed
+{
+	position:relative;
+	top:1px;
+}</string>
+    </property>
     <property name="text">
-     <string>tan</string>
+     <string>tg</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btlog">
+   <widget class="QPushButton" name="btlg">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>210</y>
-      <width>41</width>
-      <height>41</height>
+      <x>250</x>
+      <y>168</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
+    </property>
     <property name="text">
-     <string>log</string>
+     <string>lg</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btln">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>210</y>
-      <width>41</width>
-      <height>41</height>
+      <x>250</x>
+      <y>128</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>ln</string>
@@ -355,11 +1371,50 @@
    <widget class="QPushButton" name="btopen">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>250</y>
-      <width>41</width>
-      <height>41</height>
+      <x>130</x>
+      <y>208</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>(</string>
@@ -368,11 +1423,50 @@
    <widget class="QPushButton" name="btclose">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>250</y>
-      <width>41</width>
-      <height>41</height>
+      <x>170</x>
+      <y>208</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>)</string>
@@ -381,24 +1475,100 @@
    <widget class="QPushButton" name="btctan">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>170</y>
-      <width>41</width>
-      <height>41</height>
+      <x>290</x>
+      <y>208</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#91835a;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed
+{
+	position:relative;
+	top:1px;
+}</string>
+    </property>
     <property name="text">
-     <string>ctan</string>
+     <string>ctg</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btms">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>50</y>
-      <width>41</width>
-      <height>41</height>
+      <x>10</x>
+      <y>48</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#91835a;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed
+{
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>MS</string>
@@ -407,11 +1577,49 @@
    <widget class="QPushButton" name="btmr">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>50</y>
-      <width>41</width>
-      <height>41</height>
+      <x>10</x>
+      <y>88</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#91835a;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed
+{
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>MR</string>
@@ -420,11 +1628,49 @@
    <widget class="QPushButton" name="btmc">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>50</y>
-      <width>41</width>
-      <height>41</height>
+      <x>10</x>
+      <y>128</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#91835a;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed
+{
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>MC</string>
@@ -433,9 +1679,9 @@
    <widget class="QLabel" name="expression">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>20</y>
-      <width>241</width>
+      <x>10</x>
+      <y>18</y>
+      <width>391</width>
       <height>31</height>
      </rect>
     </property>
@@ -451,6 +1697,11 @@
       <pointsize>15</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+color: #b8ab85;
+}</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -458,11 +1709,49 @@
    <widget class="QPushButton" name="btdel">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>50</y>
-      <width>81</width>
-      <height>41</height>
+      <x>210</x>
+      <y>48</y>
+      <width>120</width>
+      <height>40</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#91835a;
+	-moz-border-radius:16px;
+	-webkit-border-radius:16px;
+	border-radius:16px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed
+{
+	position:relative;
+	top:1px;
+}</string>
     </property>
     <property name="text">
      <string>⌫</string>
@@ -471,27 +1760,450 @@
    <widget class="QPushButton" name="sqroot">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>90</y>
-      <width>41</width>
-      <height>41</height>
+      <x>210</x>
+      <y>88</y>
+      <width>39</width>
+      <height>39</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
+    </property>
     <property name="text">
-     <string>2√</string>
+     <string>²√</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="savedhint">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>205</y>
+      <width>110</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel 
+{
+	background-color:transparent;
+	color:#b8ab85;
+	font-family:Trebuchet MS;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}</string>
+    </property>
+    <property name="text">
+     <string>SAVED RESULT: </string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="sublabel">
+    <property name="geometry">
+     <rect>
+      <x>14</x>
+      <y>10</y>
+      <width>391</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Sans Serif</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+color: #b8ab85;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btlog">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>88</y>
+      <width>39</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
+    </property>
+    <property name="text">
+     <string>log</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt00">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>168</y>
+      <width>39</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton 
+{
+	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background-color:#b8ab85;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:18px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed {
+	background-color: #ccc2a6;
+	position:relative;
+	top:1px;
+}</string>
+    </property>
+    <property name="text">
+     <string>00</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="history_1">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>88</y>
+      <width>110</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel 
+{
+	background-color:transparent;
+	color:#b8ab85;
+	font-family:Trebuchet MS;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="history_2">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>118</y>
+      <width>110</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel 
+{
+	background-color:transparent;
+	color:#b8ab85;
+	font-family:Trebuchet MS;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="history_3">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>148</y>
+      <width>110</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel 
+{
+	background-color:transparent;
+	color:#b8ab85;
+	font-family:Trebuchet MS;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="history_4">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>178</y>
+      <width>110</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel 
+{
+	background-color:transparent;
+	color:#b8ab85;
+	font-family:Trebuchet MS;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
     </property>
    </widget>
    <widget class="QLabel" name="savedresult">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>290</y>
-      <width>241</width>
-      <height>31</height>
+      <x>340</x>
+      <y>229</y>
+      <width>110</width>
+      <height>20</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel 
+{
+	background-color:transparent;
+	color:#b8ab85;
+	font-family:Trebuchet MS;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="history_5">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>60</y>
+      <width>110</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel 
+{
+	background-color:transparent;
+	color:#b8ab85;
+	font-family:Trebuchet MS;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2d2e29;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
     </property>
    </widget>
   </widget>

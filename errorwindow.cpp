@@ -17,6 +17,6 @@ ErrorWindow::~ErrorWindow()
 void ErrorWindow::on_pushButton_clicked()
 {
     MainWindow mainwindow;
-    mainwindow.erase();
+    mainwindow.write("⌫");
     this->close();
 }
