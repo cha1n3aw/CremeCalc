@@ -248,14 +248,19 @@ void MainWindow::write(QString action)
         if (action == "⌫")
         {
             QString text = ui->expression->text();
+            qDebug() << buffer;
             qDebug() << text;
             qDebug() << text.length();
             qDebug() << text[text.length() - 1];
             if (text[(text.length() - 1)] != '>')
             {
                 qDebug() << "low cut triggered";
-                buffer.resize(buffer.length() - 1);
-                text.resize(text.length() - 1);
+                if (buffer[buffer.length() - 1] == '^') buffer.resize(buffer.length() - 1);
+                else
+                {
+                    buffer.resize(buffer.length() - 1);
+                    text.resize(text.length() - 1);
+                }
                 ui->expression->setText(text);
                 powstatus = false;
             }
@@ -267,6 +272,7 @@ void MainWindow::write(QString action)
                 ui->expression->setText(text);
                 powstatus = true;
             }
+            qDebug() << buffer;
             qDebug() << text;
             qDebug() << text.length();
             qDebug() << text[text.length() - 1];
