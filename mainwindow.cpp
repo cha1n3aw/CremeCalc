@@ -35,7 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
     setWindowTitle("CremeCalc");
-    setWindowIcon(QIcon(":icon.png"));
 
     ui->savedresult->setWordWrap(true);
     ui->history_1->setWordWrap(true);
