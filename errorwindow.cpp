@@ -7,6 +7,8 @@ ErrorWindow::ErrorWindow(QWidget *parent) :
     ui(new Ui::ErrorWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("ERROR!");
+    setWindowIcon(QIcon(":icon.png"));
 }
 
 ErrorWindow::~ErrorWindow()
