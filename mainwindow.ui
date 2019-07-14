@@ -10,6 +10,12 @@
     <height>270</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Trebuchet MS</family>
+    <pointsize>18</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
