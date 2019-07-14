@@ -43,12 +43,8 @@
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -95,12 +91,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -147,12 +139,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -199,12 +187,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -251,12 +235,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -303,12 +283,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -355,12 +331,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -407,12 +379,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -459,12 +427,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -511,12 +475,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -562,12 +522,8 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#91835a;
-	-moz-border-radius:16px;
-	-webkit-border-radius:16px;
 	border-radius:16px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -614,12 +570,8 @@ QPushButton:pressed
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -666,12 +618,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -718,12 +666,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -770,12 +714,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -822,12 +762,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -874,12 +810,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -926,12 +858,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -978,12 +906,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1030,12 +954,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1081,12 +1001,8 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#91835a;
-	-moz-border-radius:16px;
-	-webkit-border-radius:16px;
 	border-radius:16px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1132,12 +1048,8 @@ QPushButton:pressed
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#91835a;
-	-moz-border-radius:16px;
-	-webkit-border-radius:16px;
 	border-radius:16px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1183,12 +1095,8 @@ QPushButton:pressed
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#91835a;
-	-moz-border-radius:16px;
-	-webkit-border-radius:16px;
 	border-radius:16px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1234,12 +1142,8 @@ QPushButton:pressed
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#91835a;
-	-moz-border-radius:16px;
-	-webkit-border-radius:16px;
 	border-radius:16px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1286,12 +1190,8 @@ QPushButton:pressed
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1338,12 +1238,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1390,12 +1286,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1442,12 +1334,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1493,12 +1381,8 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#91835a;
-	-moz-border-radius:16px;
-	-webkit-border-radius:16px;
 	border-radius:16px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1544,12 +1428,8 @@ QPushButton:pressed
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#91835a;
-	-moz-border-radius:16px;
-	-webkit-border-radius:16px;
 	border-radius:16px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1595,12 +1475,8 @@ QPushButton:pressed
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#91835a;
-	-moz-border-radius:16px;
-	-webkit-border-radius:16px;
 	border-radius:16px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1646,12 +1522,8 @@ QPushButton:pressed
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#91835a;
-	-moz-border-radius:16px;
-	-webkit-border-radius:16px;
 	border-radius:16px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1727,12 +1599,8 @@ color: #b8ab85;
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#91835a;
-	-moz-border-radius:16px;
-	-webkit-border-radius:16px;
 	border-radius:16px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1779,12 +1647,8 @@ QPushButton:pressed
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1869,12 +1733,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;
@@ -1921,12 +1781,8 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	-moz-box-shadow: 0px 1px 0px 0px #1c1b18;
-	-webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
 	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
-	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
 	border-radius:18px;
 	border:2px solid #333029;
 	display:inline-block;

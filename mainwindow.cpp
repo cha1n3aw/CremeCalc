@@ -248,34 +248,56 @@ void MainWindow::write(QString action)
         if (action == "⌫")
         {
             QString text = ui->expression->text();
-            qDebug() << buffer;
-            qDebug() << text;
-            qDebug() << text.length();
-            qDebug() << text[text.length() - 1];
-            if (text[(text.length() - 1)] != '>')
+            if(buffer[buffer.length() - 1] == 'r')
             {
-                qDebug() << "low cut triggered";
-                if (buffer[buffer.length() - 1] == '^') buffer.resize(buffer.length() - 1);
-                else
+                int c = 0;
+                int i = text.length() - 1;
+                while (text[i] != '<')
                 {
-                    buffer.resize(buffer.length() - 1);
                     text.resize(text.length() - 1);
+                    i--;
                 }
+                text.resize(text.length() - 1);
+
+                i = text.length() - 1;
+                while (text[i] != '<')
+                {
+                    c = i;
+                    i--;
+                }
+                for (c = c-1; c<text.length(); c++)
+                {
+                    text[c] = text[c+5];
+                }
+                text.resize(text.length() - 5);
                 ui->expression->setText(text);
-                powstatus = false;
+                buffer.resize(buffer.length() - 1);
             }
             else
             {
-                qDebug() << "high cut triggered";
-                buffer.resize(buffer.length() - 1);
-                text.resize(text.length() - 12);
-                ui->expression->setText(text);
-                powstatus = true;
+                if (text[(text.length() - 1)] != '>')
+                {
+                    qDebug() << "low cut triggered";
+                    if (buffer[buffer.length() - 1] == '^') buffer.resize(buffer.length() - 1);
+                    else
+                    {
+                        buffer.resize(buffer.length() - 1);
+                        text.resize(text.length() - 1);
+                    }
+                    ui->expression->setText(text);
+                    powstatus = false;
+                }
+                else
+                {
+                    qDebug() << "high cut triggered";
+                    buffer.resize(buffer.length() - 1);
+                    text.resize(text.length() - 12);
+                    ui->expression->setText(text);
+                    powstatus = true;
+                }
             }
             qDebug() << buffer;
             qDebug() << text;
-            qDebug() << text.length();
-            qDebug() << text[text.length() - 1];
         }
         else
         {
