@@ -1680,9 +1680,9 @@ QPushButton:pressed
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>18</y>
-      <width>391</width>
-      <height>31</height>
+      <y>8</y>
+      <width>441</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="maximumSize">
@@ -1693,8 +1693,8 @@ QPushButton:pressed
     </property>
     <property name="font">
      <font>
-      <family>MS Sans Serif</family>
-      <pointsize>15</pointsize>
+      <family>Trebuchet MS</family>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -1845,33 +1845,6 @@ QPushButton:pressed {
     </property>
     <property name="alignment">
      <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="sublabel">
-    <property name="geometry">
-     <rect>
-      <x>14</x>
-      <y>10</y>
-      <width>391</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>MS Sans Serif</family>
-      <pointsize>15</pointsize>
-     </font>
-    </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
-color: #b8ab85;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="btlog">

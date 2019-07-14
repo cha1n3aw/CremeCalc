@@ -74,7 +74,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->bteq, SIGNAL(clicked()), this, SLOT(buttons()));
     connect(ui->btroot, SIGNAL(clicked()), this, SLOT(nondefaultop()));
     connect(ui->bt00, SIGNAL(clicked()), this, SLOT(buttons()));
-    connect(ui->btlog, SIGNAL(clicked()), this, SLOT(buttons()));
+    connect(ui->btlog, SIGNAL(clicked()), this, SLOT(nondefaultop()));
     connect(ui->sqroot, SIGNAL(clicked()), this, SLOT(nondefaultop()));
     connect(ui->btms, SIGNAL(clicked()), this, SLOT(nondefaultop()));
     connect(ui->btmr, SIGNAL(clicked()), this, SLOT(nondefaultop()));
@@ -100,12 +100,12 @@ void MainWindow::nondefaultop()
     if (op == "×") write("*");
     if (op == "²√")
     {
-        powstatus = true;
         write("2");
         powstatus = false;
         write("r");
     }
     if (op == "√") write("r");
+    if (op == "log") write("g");
     if (op == "x^ʸ") write("^");
     if (op == "MS")
     {
@@ -131,7 +131,6 @@ void MainWindow::nondefaultop()
 void MainWindow::errorwindow()
 {
     ui->expression->setText("");
-    ui->sublabel->setText("");
     buffer = "";
     ErrorWindow errorwindow;
     errorwindow.setModal(true);
@@ -175,142 +174,149 @@ void MainWindow::write(QString action)
 {
     switch (action.toLocal8Bit().constData()[0])
     {
-    case '-': powstatus = false;
-        break;
-    case '+': powstatus = false;
-        break;
-    case '/': powstatus = false;
-        break;
-    case '*': powstatus = false;
-        break;
-    case 'C': powstatus = false;
-        break;
-    case '^': powstatus = true;
-        break;
-    case '=': result();
-        break;
-    default:
+        case '-': powstatus = false;
+            break;
+        case '+': powstatus = false;
+            break;
+        case '/': powstatus = false;
+            break;
+        case '*': powstatus = false;
+            break;
+        case 'C': powstatus = false;
+            break;
+        case '^': powstatus = true;
+            break;
+        case '=': result();
+            break;
+        case 'r':
         {
-           if (action == "r")
-           {
-               QString text = ui->expression->text();
-               QString rootpow = ui->sublabel->text();
-               int i = buffer.length() - 1;
-               while (i >= 0 && buffer[i] != '+'
-                      && buffer[i] != '+'
-                      && buffer[i] != '-'
-                      && buffer[i] != '*'
-                      && buffer[i] != '/'
-                      && buffer[i] != '^')
-                   {
-                       text[i] = QChar(0x2007);
-                       rootpow[i] = buffer[i];
-                       ui->sublabel->setText(rootpow);
-                       ui->expression->setText(text);
-                       update();
-                       i--;
-                   }
-           }
+            QString text;
+            QString temp = ui->expression->text();
+            int i = buffer.length() - 1;
+            QString text1;
+            while (i >= 0
+                   && buffer[i] != '+'
+                   && buffer[i] != '-'
+                   && buffer[i] != '*'
+                   && buffer[i] != '/'
+                   && buffer[i] != '^')
+                {
+                    text += buffer[i];
+                    temp.resize(temp.length() - 1);
+                    i--;
+                }
+            text1.resize(text.length());
+            for (i = 0; i < text.length(); i++)
+            {
+                text1[text1.length() - 1 - i] = text[i];
+            }
+            ui->expression->setText(temp + "<sup>" + text1 + "</sup>");
+            buffer = buffer + "r";
+            ui->expression->setText(ui->expression->text() + "√");
+            break;
         }
+        case 'g':
+        {
+            QString text;
+            QString temp = ui->expression->text();
+            int i = buffer.length() - 1;
+            QString text1;
+            while (i >= 0
+                   && buffer[i] != '+'
+                   && buffer[i] != '-'
+                   && buffer[i] != '*'
+                   && buffer[i] != '/'
+                   && buffer[i] != '^')
+                {
+                    text += buffer[i];
+                    temp.resize(temp.length() - 1);
+                    i--;
+                }
+            text1.resize(text.length());
+            for (i = 0; i < text.length(); i++)
+            {
+                text1[text1.length() - 1 - i] = text[i];
+            }
+            ui->expression->setText(temp + "log<sub>" + text1 + "</sub>");
+            buffer = buffer + "l";
+            break;
+        }
+
     }
-    if (action != "=")
+    if (action != "=" && action != 'r' && action != 'g')
     {
         if (action == "⌫")
         {
-            if (buffer.length() != 0)
+            QString text = ui->expression->text();
+            qDebug() << text;
+            qDebug() << text.length();
+            qDebug() << text[text.length() - 1];
+            if (text[(text.length() - 1)] != '>')
             {
-                if (buffer[buffer.length() - 1] == '^')
-                {
-                    buffer.resize(buffer.length() - 1);
-                    powstatus = false;
-                }
-                else
-                {
-                    buffer.resize(buffer.length() - 1);
-                    QString text = ui->expression->text();
-                    text.resize(text.length() - 1);
-                    ui->expression->setText(text);
-                    text = ui->sublabel->text();
-                    text.resize(text.length() - 1);
-                    ui->sublabel->setText(text);
-                    update();
-                }
+                qDebug() << "low cut triggered";
+                buffer.resize(buffer.length() - 1);
+                text.resize(text.length() - 1);
+                ui->expression->setText(text);
+                powstatus = false;
             }
+            else
+            {
+                qDebug() << "high cut triggered";
+                buffer.resize(buffer.length() - 1);
+                text.resize(text.length() - 12);
+                ui->expression->setText(text);
+                powstatus = true;
+            }
+            qDebug() << text;
+            qDebug() << text.length();
+            qDebug() << text[text.length() - 1];
         }
         else
         {
             if (action == "C")
             {
                 buffer = "";
-                ui->sublabel->setText("");
                 ui->expression->setText("");
                 powstatus = false;
-                update();
             }
             else
             {
-                if (powstatus == false)
+                if (powstatus == true)
                 {
-                    if (action == "r")
+                    if (action != "^")
                     {
-                        buffer = buffer + "r";
-                        ui->expression->setText(ui->expression->text() + "√");
-                        ui->sublabel->setText(ui->sublabel->text() + QChar(0x2007));
-                        update();
+                        buffer += action;
+                        ui->expression->setText(ui->expression->text() + "<sup>" + action + "</sup>");
                     }
-                    else
-                    {
-                        if (action == "*")
-                        {
-                            buffer = buffer + "*";
-                            ui->expression->setText(ui->expression->text() + "×");
-                            ui->sublabel->setText(ui->sublabel->text() + QChar(0x2007));
-                            update();
-                        }
-                        else
-                        {
-                            if (action == "/")
-                            {
-                                buffer = buffer + "/";
-                                ui->expression->setText(ui->expression->text() + "÷");
-                                ui->sublabel->setText(ui->sublabel->text() + QChar(0x2007));
-                                update();
-                            }
-                            else
-                            {
-                                if (action == "(" || action == ")" || action == "-")
-                                {
-                                    ui->sublabel->setText(ui->sublabel->text() + QChar(0x2004));
-                                    buffer = buffer + action;
-                                    ui->expression->setText(ui->expression->text() + action);
-                                    update();
-                                }
-                                else
-                                {
-                                    buffer = buffer + action;
-                                    ui->expression->setText(ui->expression->text() + action);
-                                    ui->sublabel->setText(ui->sublabel->text() + QChar(0x2007));
-                                    update();
-                                }
-                            }
-                        }
-                    }
+                    else buffer += action;
                 }
                 else
                 {
-                    if(action != "^")
+                    if (action == "*")
                     {
-                        buffer = buffer + action;
-                        ///////////////////////////
-                        ui->sublabel->setText(ui->sublabel->text() + action);
-                       // substring = substring + action;
-                        ui->expression->setText(ui->expression->text() + QChar(0x2007)); //QChar(0x2001) + QChar(0x2001)
-                        update();
+                        buffer = buffer + "*";
+                        ui->expression->setText(ui->expression->text() + "×");
                     }
                     else
                     {
-                        buffer = buffer + action;
-                        update();
+                        if (action == "/")
+                        {
+                            buffer = buffer + "/";
+                            ui->expression->setText(ui->expression->text() + "÷");
+                        }
+                        else
+                        {
+                            if (action == "(" || action == ")" || action == "-")
+                            {
+                                buffer = buffer + action;
+                                ui->expression->setText(ui->expression->text() + action);
+                            }
+                            else
+                            {
+                                buffer = buffer + action;
+                                ui->expression->setText(ui->expression->text() + action);
+                            }
+                        }
                     }
                 }
             }
