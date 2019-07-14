@@ -194,17 +194,29 @@ void MainWindow::write(QString action)
             QString temp = ui->expression->text();
             int i = buffer.length() - 1;
             QString text1;
-            while (i >= 0
-                   && buffer[i] != '+'
-                   && buffer[i] != '-'
-                   && buffer[i] != '*'
-                   && buffer[i] != '/'
-                   && buffer[i] != '^')
-                {
-                    text += buffer[i];
-                    temp.resize(temp.length() - 1);
-                    i--;
-                }
+            if(buffer[i] == ')')
+            {
+                while (i >= 0 && buffer[i + 1] != '(')
+                    {
+                        text += buffer[i];
+                        temp.resize(temp.length() - 1);
+                        i--;
+                    }
+            }
+            else
+            {
+                while (i >= 0
+                       && buffer[i] != '+'
+                       && buffer[i] != '-'
+                       && buffer[i] != '*'
+                       && buffer[i] != '/'
+                       && buffer[i] != '^')
+                    {
+                        text += buffer[i];
+                        temp.resize(temp.length() - 1);
+                        i--;
+                    }
+            }
             text1.resize(text.length());
             for (i = 0; i < text.length(); i++)
             {
