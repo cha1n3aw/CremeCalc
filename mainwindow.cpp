@@ -27,6 +27,7 @@ void errorwindow();
 static QString buffer;
 static bool powstatus = false;
 static bool error = false;
+static bool bracketstatus = false;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -140,32 +141,35 @@ void MainWindow::result ()
 {
     error = false;
     QString result;
-    buffer = QString::fromStdString(stringremover(buffer.toLocal8Bit().constData()));
-    string expression = buffer.toLocal8Bit().constData();
-    firewall(expression);
-    if (!error)
+    if (buffer.length() != 0)
     {
-            string_parsing(expression);
-            result = QString::fromStdString(to_string(stacktobuffer()));
-            if(!error)
-            {
-                int i=result.length() - 1;
-                while (result[i] == '0' && i>0)
+        buffer = QString::fromStdString(stringremover(buffer.toLocal8Bit().constData()));
+        string expression = buffer.toLocal8Bit().constData();
+        firewall(expression);
+        if (!error)
+        {
+                string_parsing(expression);
+                result = QString::fromStdString(to_string(stacktobuffer()));
+                if(!error)
                 {
-                   if (result[i-1] == '.') result.resize(i-1);
-                    else result.resize(i);
-                   i--;
+                    int i=result.length() - 1;
+                    while (result[i] == '0' && i>0)
+                    {
+                       if (result[i-1] == '.') result.resize(i-1);
+                        else result.resize(i);
+                       i--;
+                    }
+                    buffer = buffer + "=" + result;
+                    ui->expression->setText(ui->expression->text() + "=" + result);
+                    ui->history_4->setText(ui->history_3->text());
+                    ui->history_3->setText(ui->history_2->text());
+                    ui->history_2->setText(ui->history_1->text());
+                    ui->history_1->setText(result);
                 }
-                buffer = buffer + "=" + result;
-                ui->expression->setText(ui->expression->text() + "=" + result);
-                ui->history_4->setText(ui->history_3->text());
-                ui->history_3->setText(ui->history_2->text());
-                ui->history_2->setText(ui->history_1->text());
-                ui->history_1->setText(result);
-            }
-            else errorwindow();
+                else errorwindow();
+        }
+        else errorwindow();
     }
-    else errorwindow();
 }
 
 void MainWindow::write(QString action)
@@ -236,7 +240,8 @@ void MainWindow::write(QString action)
                    && buffer[i] != '-'
                    && buffer[i] != '*'
                    && buffer[i] != '/'
-                   && buffer[i] != '^')
+                   && buffer[i] != '^'
+                   && buffer[i] != 'r')
                 {
                     text += buffer[i];
                     temp.resize(temp.length() - 1);
@@ -319,10 +324,19 @@ void MainWindow::write(QString action)
             }
             else
             {
+                if (bracketstatus) powstatus = true;
                 if (powstatus == true)
                 {
                     if (action != "^")
                     {
+                        if(action == '(')
+                        {
+                            bracketstatus = true;
+                        }
+                        if(action == ')')
+                        {
+                            bracketstatus = false;
+                        }
                         buffer += action;
                         ui->expression->setText(ui->expression->text() + "<sup>" + action + "</sup>");
                     }
@@ -410,7 +424,7 @@ void MainWindow::keyPressEvent(QKeyEvent *pressedkey)
         break;
     case Qt::Key_Period: write(".");
         break;
-    case Qt::Key_AsciiCircum: powstatus = true; write("^");
+    case Qt::Key_AsciiCircum: write("^");
         break;
     case Qt::Key_BracketLeft: write("(");
         break;
@@ -429,79 +443,79 @@ void firewall(string expression)
     bool prevop = false;
     int open = 0;
     int close = 0;
-    if (expression[0] == '+'
-        || expression[0] == '-'
-        || expression[0] == '*'
-        || expression[0] == '/'
-        || expression[0] == '^'
-        || expression[0] == 'r'
-        || expression[expression.length() - 1] == '+'
-        || expression[expression.length() - 1] == '-'
-        || expression[expression.length() - 1] == '*'
-        || expression[expression.length() - 1] == '/'
-        || expression[expression.length() - 1] == '^'
-        || expression[expression.length() - 1] == 'r'
-        || (expression[0] == 'l' && expression[1] == 'o' && expression[2] == 'g'))
+    if (expression.length() != 0)
     {
-        error = true;
-    }
-    for (unsigned long long i = 0; i < expression.length(); i++)
-    {
-        if (isdigit(expression[i]))
+        if (expression.length() != 0 &&
+              (expression[0] == '+'
+            || expression[0] == '.'
+            || expression[0] == '-'
+            || expression[0] == '*'
+            || expression[0] == '/'
+            || expression[0] == '^'
+            || expression[0] == 'r'
+            || expression[expression.length() - 1] == '.'
+            || expression[expression.length() - 1] == '+'
+            || expression[expression.length() - 1] == '-'
+            || expression[expression.length() - 1] == '*'
+            || expression[expression.length() - 1] == '/'
+            || expression[expression.length() - 1] == '^'
+            || expression[expression.length() - 1] == 'r'
+            || (expression[0] == 'l' && expression[1] == 'o' && expression[2] == 'g')))
         {
-            if (i < expression.length() && expression[i + 1] == '(') error = true;
-            prevop = false;
-            continue;
-        }
-        if (expression[i] == '(')
-        {
-            prevop = false;
-            open++;
-            continue;
-        }
-        if (expression[i] == ')')
-        {
-            prevop = false;
-            close++;
-            continue;
-        }
-        if (expression[i] == '.')
-        {
-            if (prevdot == true) error = true;
-            else
-            {
-                prevdot = true;
-                prevop = true;
-            }
-            continue;
-        }
-        if (expression[i] == '+'
-            || expression[i] == '-'
-            || expression[i] == '*'
-            || expression[i] == '/'
-            || expression[i] == '^'
-            || expression[i] == 'r')
-        {
-            if (i < expression.length() && expression[i + 1] == ')') error = true;
-            if (prevop == true) error = true;
-            else prevop = true;
-            continue;
+            error = true;
         }
 
-    }
+        for (unsigned long long i = 0; i < expression.length(); i++)
+        {
+            if (isdigit(expression[i]))
+            {
+                if (i < expression.length() && expression[i + 1] == '(') error = true;
+                prevop = false;
+                continue;
+            }
+            if (expression[i] == '(')
+            {
+                prevop = false;
+                open++;
+                continue;
+            }
+            if (expression[i] == ')')
+            {
+                prevop = false;
+                close++;
+                continue;
+            }
+            if (expression[i] == '.')
+            {
+                if (prevdot == true) error = true;
+                else
+                {
+                    prevdot = true;
+                    prevop = true;
+                }
+                continue;
+            }
+            if (expression[i] == '+'
+                || expression[i] == '-'
+                || expression[i] == '*'
+                || expression[i] == '/'
+                || expression[i] == '^'
+                || expression[i] == 'r')
+            {
+                if (i < expression.length() && expression[i + 1] == ')') error = true;
+                if (prevop == true) error = true;
+                else prevop = true;
+                continue;
+            }
+
+        }
     if (open != close) error = true;
+    }
+    else error = true;
 }
 
 string stringremover(string expression)
 {
-    if (expression[0] == '*' || expression[0] == '/' || expression[0] == '+') //на случай если в начале будет * или / или +
-    {
-        for (unsigned long long i = 0; i < expression.length(); i++)
-        {
-            expression[i] = expression[i + 1]; //стринг сдвигается на 1 позицию влево
-        }
-        expression.resize(expression.length() - 1);
-    }
     for (unsigned long i = 0; i < expression.length(); i++)
     {
         if (expression[i] == ' ')
