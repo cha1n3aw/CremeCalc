@@ -102,7 +102,37 @@ void MainWindow::on_degrad_stateChanged(int arg1)
 
 void MainWindow::on_indicator_stateChanged(int arg1)
 {
-    qDebug() << arg1;
+    QString creme_label = "QLabel{"
+                          "background-color:transparent;"
+                          "color:#91835a;"
+                          "font-family:Trebuchet MS;"
+                          "font-size:16px;"
+                          "font-weight:bold;"
+                          "text-decoration:none;"
+                          "text-shadow:0px 1px 0px #2d2e29;}";
+    QString creme_mainbuttons = "QPushButton {"
+                            "background-color:#91835a;"
+                            "border-radius:16px;"
+                            "border:2px solid #333029;"
+                            "color:#25261f;"
+                            "font-family:Trebuchet MS;"
+                            "font-size:16px;"
+                            "font-weight:bold;"
+                            "text-decoration:none;}"
+                            "QPushButton:hover{"
+                            "background-color:#a89a6f;}"
+                            "QPushButton:pressed"
+                            "{position:relative;"
+                            "top:1px;}";
+    QString lucid_label = "QLabel{"
+                            "background-color:transparent;"
+                            "color:#2e313b;"
+                            "font-family:Trebuchet MS;"
+                            "font-size:16px;"
+                            "font-weight:bold;"
+                            "text-decoration:none;"
+                            "text-shadow:0px 1px 0px #2d2e29;}";
+
     if (arg1 == 2)
     {
         ui->indicator->setText("Lucid Theme");
@@ -120,6 +150,11 @@ void MainWindow::on_indicator_stateChanged(int arg1)
                                       "background: transparent;"
                                       "padding-left: 10px;"
                                       "transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);}");
+        ui->history_1->setStyleSheet(lucid_label);
+        ui->history_2->setStyleSheet(lucid_label);
+        ui->history_3->setStyleSheet(lucid_label);
+        ui->history_4->setStyleSheet(lucid_label);
+        ui->savedresult->setStyleSheet(lucid_label);
     }
     else
     {
@@ -138,6 +173,21 @@ void MainWindow::on_indicator_stateChanged(int arg1)
                                       "background: transparent;"
                                       "padding-left: 10px;"
                                       "transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);}");
+        ui->history_1->setStyleSheet(creme_label);
+        ui->history_2->setStyleSheet(creme_label);
+        ui->history_3->setStyleSheet(creme_label);
+        ui->history_4->setStyleSheet(creme_label);
+        ui->savedresult->setStyleSheet(creme_label);
+        ui->btdel->setStyleSheet(creme_mainbuttons);
+        ui->bttan->setStyleSheet(creme_mainbuttons);
+        ui->btctan->setStyleSheet(creme_mainbuttons);
+        ui->btsin->setStyleSheet(creme_mainbuttons);
+        ui->btcos->setStyleSheet(creme_mainbuttons);
+        ui->btms->setStyleSheet(creme_mainbuttons);
+        ui->btmr->setStyleSheet(creme_mainbuttons);
+        ui->btmc->setStyleSheet(creme_mainbuttons);
+        ui->btclr->setStyleSheet(creme_mainbuttons);
+        ui->bteq->setStyleSheet(creme_mainbuttons);
     }
 
 }

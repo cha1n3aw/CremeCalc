@@ -1768,15 +1768,14 @@ QPushButton:pressed {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel 
-{
-	background-color:transparent;
-	color:#b8ab85;
-	font-family:Trebuchet MS;
-	font-size:15px;
-	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2d2e29;
+     <string notr="true">QLabel{
+                          background-color:transparent;
+                          color:#91835a;
+                         font-family:Trebuchet MS;
+                          font-size:15px;
+                         font-weight:bold;
+                         text-decoration:none;
+                          text-shadow:0px 1px 0px #2d2e29;
 }</string>
     </property>
     <property name="text">
@@ -1806,15 +1805,14 @@ QPushButton:pressed {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel 
-{
-	background-color:transparent;
-	color:#b8ab85;
-	font-family:Trebuchet MS;
-	font-size:15px;
-	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2d2e29;
+     <string notr="true">QLabel{
+                          background-color:transparent;
+                          color:#91835a;
+                         font-family:Trebuchet MS;
+                          font-size:15px;
+                         font-weight:bold;
+                         text-decoration:none;
+                          text-shadow:0px 1px 0px #2d2e29;
 }</string>
     </property>
     <property name="text">
@@ -1844,15 +1842,14 @@ QPushButton:pressed {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel 
-{
-	background-color:transparent;
-	color:#b8ab85;
-	font-family:Trebuchet MS;
-	font-size:15px;
-	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2d2e29;
+     <string notr="true">QLabel{
+                          background-color:transparent;
+                          color:#91835a;
+                         font-family:Trebuchet MS;
+                          font-size:15px;
+                         font-weight:bold;
+                         text-decoration:none;
+                          text-shadow:0px 1px 0px #2d2e29;
 }</string>
     </property>
     <property name="text">
@@ -1882,15 +1879,14 @@ QPushButton:pressed {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel 
-{
-	background-color:transparent;
-	color:#b8ab85;
-	font-family:Trebuchet MS;
-	font-size:15px;
-	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2d2e29;
+     <string notr="true">QLabel{
+                          background-color:transparent;
+                          color:#91835a;
+                         font-family:Trebuchet MS;
+                          font-size:15px;
+                         font-weight:bold;
+                         text-decoration:none;
+                          text-shadow:0px 1px 0px #2d2e29;
 }</string>
     </property>
     <property name="text">
@@ -2054,15 +2050,14 @@ QCheckBox {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel 
-{
-	background-color:transparent;
-	color:#b8ab85;
-	font-family:Trebuchet MS;
-	font-size:15px;
-	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2d2e29;
+     <string notr="true">QLabel{
+                          background-color:transparent;
+                          color:#91835a;
+                         font-family:Trebuchet MS;
+                          font-size:15px;
+                         font-weight:bold;
+                         text-decoration:none;
+                          text-shadow:0px 1px 0px #2d2e29;
 }</string>
     </property>
     <property name="text">
