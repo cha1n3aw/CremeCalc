@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>461</width>
-    <height>270</height>
+    <width>476</width>
+    <height>271</height>
    </rect>
   </property>
   <property name="font">
@@ -1523,7 +1523,7 @@ QPushButton:pressed
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>441</width>
+      <width>431</width>
       <height>41</height>
      </rect>
     </property>
@@ -1753,7 +1753,7 @@ QPushButton:pressed {
      <rect>
       <x>340</x>
       <y>70</y>
-      <width>111</width>
+      <width>101</width>
       <height>21</height>
      </rect>
     </property>
@@ -1791,7 +1791,7 @@ QPushButton:pressed {
      <rect>
       <x>340</x>
       <y>110</y>
-      <width>111</width>
+      <width>101</width>
       <height>21</height>
      </rect>
     </property>
@@ -1829,45 +1829,7 @@ QPushButton:pressed {
      <rect>
       <x>340</x>
       <y>150</y>
-      <width>111</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Trebuchet MS</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <underline>false</underline>
-      <strikeout>false</strikeout>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel 
-{
-	background-color:transparent;
-	color:#b8ab85;
-	font-family:Trebuchet MS;
-	font-size:15px;
-	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2d2e29;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="history_4">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>190</y>
-      <width>111</width>
+      <width>101</width>
       <height>21</height>
      </rect>
     </property>
@@ -1904,8 +1866,8 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>231</y>
-      <width>111</width>
+      <y>190</y>
+      <width>101</width>
       <height>20</height>
      </rect>
     </property>
@@ -1936,6 +1898,77 @@ QPushButton:pressed {
     </property>
     <property name="alignment">
      <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="indicator">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>220</y>
+      <width>131</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox::indicator:checked {
+					 		  border:1px solid #25261f;
+ 							  border-radius:5px;
+                              background-color: #d7dae0;
+ }
+QCheckBox::indicator:checked:pressed {
+							  border:1px solid #25261f;
+ 							  border-radius:5px;
+                              background-color: #505739;
+ }
+QCheckBox::indicator:checked:hover {
+							  border:1px solid #25261f;
+ 							  border-radius:5px;
+                              background-color: #505739;
+ }
+QCheckBox::indicator:unchecked {
+					  		   border:1px solid #25261f;
+ 							   border-radius:5px;
+                               background-color: transparent;	
+                               color:#91835a;
+ }
+QCheckBox::indicator:unchecked:pressed {
+							  border:1px solid #25261f;
+ 							  border-radius:5px;
+                              background-color: #505739;		
+ }
+QCheckBox::indicator:unchecked:hover {
+							  border:1px solid #25261f;
+ 							  border-radius:5px;
+                              background-color: #505739;				
+ }
+QCheckBox {
+							   border-radius:16px;
+                               background-color:#91835a;
+                               spacing: 5px;
+                               color:#25261f;
+                               border:2px solid #333029;
+                               font-family:Trebuchet MS;
+                               font-size:14px;
+                               font-weight:bold;
+                               padding-left: 5px;
+                               padding-right: 5px;
+                               padding-top: 5px;
+                               padding-bottom: 5px;
+
+ }
+
+                 </string>
+    </property>
+    <property name="text">
+     <string>Creme Theme</string>
     </property>
    </widget>
   </widget>
