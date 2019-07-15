@@ -27,6 +27,7 @@ static QString buffer;
 static bool powstatus = false;
 static bool error = false;
 static bool bracketstatus = false;
+static bool radians;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -84,6 +85,19 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::on_degrad_stateChanged(int arg1)
+{
+    if (arg1 == 2)
+    {
+        ui->degrad->setText("Radians");
+        radians = true;
+    }
+    else
+    {
+        ui->degrad->setText("Degrees");
+        radians = false;
+    }
+}
 
 void MainWindow::on_indicator_stateChanged(int arg1)
 {
@@ -666,7 +680,7 @@ void MainWindow::stringremover()
 double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int opstacksize)
 {
     int i, c;
-
+    double angle;
     for (i = 0; i < opstacksize; i++)
     {
         if (opbuffer[i] == 'l')
@@ -710,7 +724,9 @@ double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int 
         }
         if (opbuffer[i] == 's')
         {
-            digitbuffer[i] = sin(digitbuffer[i+1]*(atan(1.0) * 4)/180);
+            if (radians == true) angle = digitbuffer[i+1];
+            else angle = digitbuffer[i+1]*(atan(1.0) * 4)/180;
+            digitbuffer[i] = sin(angle);
             for (c = i; c < opstacksize - 1; c++)
             {
                 digitbuffer[c + 1] = digitbuffer[c + 2];
@@ -723,7 +739,9 @@ double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int 
         }
         if (opbuffer[i] == 'c')
         {
-            digitbuffer[i] = cos(digitbuffer[i+1]*(atan(1.0) * 4)/180);
+            if (radians == true) angle = digitbuffer[i+1];
+            else angle = digitbuffer[i+1]*(atan(1.0) * 4)/180;
+            digitbuffer[i] = cos(angle);
             for (c = i; c < opstacksize - 1; c++)
             {
                 digitbuffer[c + 1] = digitbuffer[c + 2];
@@ -738,7 +756,9 @@ double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int 
         {
             if (digitbuffer[i+1] != 90.0 && digitbuffer[i+1] != 270.0)
             {
-                digitbuffer[i] = tan(digitbuffer[i+1]*(atan(1.0) * 4)/180);
+                if (radians == true) angle = digitbuffer[i+1];
+                else angle = digitbuffer[i+1]*(atan(1.0) * 4)/180;
+                digitbuffer[i] = tan(angle);
                 for (c = i; c < opstacksize - 1; c++)
                 {
                     digitbuffer[c + 1] = digitbuffer[c + 2];
@@ -755,7 +775,9 @@ double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int 
         {
             if (digitbuffer[i+1] != 0.0 && digitbuffer[i+1] != 180.0 && digitbuffer[i+1] != 360.0)
             {
-                digitbuffer[i] = 1/(tan(digitbuffer[i+1]*(atan(1.0) * 4)/180));
+                if (radians == true) angle = digitbuffer[i+1];
+                else angle = digitbuffer[i+1]*(atan(1.0) * 4)/180;
+                digitbuffer[i] = 1/(tan(angle));
                 for (c = i; c < opstacksize - 1; c++)
                 {
                     digitbuffer[c + 1] = digitbuffer[c + 2];

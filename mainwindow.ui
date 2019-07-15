@@ -1971,6 +1971,69 @@ QCheckBox {
      <string>Creme Theme</string>
     </property>
    </widget>
+   <widget class="QCheckBox" name="degrad">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>180</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox::indicator:checked {
+					 		  border:0px solid #25261f;
+ 							  border-radius:5px;
+                              background-color: transparent;	
+ }
+QCheckBox::indicator:checked:pressed {
+							  border:0px solid #25261f;
+ 							  border-radius:5px;
+                              background-color: transparent;	
+ }
+QCheckBox::indicator:checked:hover {
+							  border:0px solid #25261f;
+ 							  border-radius:5px;
+                              background-color: transparent;	
+ }
+QCheckBox::indicator:unchecked {
+					  		   border:0px solid #25261f;
+ 							   border-radius:5px;
+                               background-color: transparent;	
+                               color:#91835a;
+ }
+QCheckBox::indicator:unchecked:pressed {
+							  border:0px solid #25261f;
+ 							  border-radius:5px;
+                              background-color: transparent;			
+ }
+QCheckBox::indicator:unchecked:hover {
+							  border:0px solid #25261f;
+ 							  border-radius:5px;
+                              background-color: transparent;					
+ }
+QCheckBox {
+							   border-radius:16px;
+                               background-color:#91835a;
+                               spacing: 18px;
+                               color:#25261f;
+                               border:2px solid #333029;
+                               font-family:Trebuchet MS;
+                               font-size:14px;
+                               font-weight:bold;
+                               padding-left: 5px;
+                               padding-right: 5px;
+                               padding-top: 5px;
+                               padding-bottom: 5px;
+
+ }
+
+</string>
+    </property>
+    <property name="text">
+     <string>Degrees</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
