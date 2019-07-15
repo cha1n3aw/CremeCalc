@@ -36,6 +36,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
     setWindowTitle("CremeCalc");
+    ui->savedresult->setWordWrap(true);
+    ui->history_1->setWordWrap(true);
+    ui->history_2->setWordWrap(true);
+    ui->history_3->setWordWrap(true);
+    ui->history_4->setWordWrap(true);
     connect(ui->bt0, SIGNAL(clicked()), this, SLOT(buttons()));
     connect(ui->bt1, SIGNAL(clicked()), this, SLOT(buttons()));
     connect(ui->bt2, SIGNAL(clicked()), this, SLOT(buttons()));
@@ -236,9 +241,12 @@ void MainWindow::result ()
     QString result;
     if (buffer.length() != 0)
     {
+        qDebug() << buffer;
         stringremover();
+        qDebug() << buffer;
         string expression = buffer.toLocal8Bit().constData();
         firewall(expression);
+        qDebug() << buffer;
         if (!error)
         {
                 string_parsing(expression);
@@ -673,9 +681,11 @@ void MainWindow::stringremover()
                 texttemp[c] = buffer[i];
                 c++;
             }
+
             buffer = texttemp;
         }
     }
+    qDebug() << "buffer after = " << buffer;
     for (int i = 0; i < buffer.length(); i++)
     {
         if (buffer[i] == ' ')
@@ -688,19 +698,20 @@ void MainWindow::stringremover()
             i--;
         }
     }
-    for (int i = 0; i < buffer.length() - 1; i++)
+    qDebug() << "after space remover " << buffer;
+    for (int i = 0; i < buffer.length() ; i++)
     {
         if (buffer[i] == '(' && (buffer[i + 1] == '-' || buffer[i + 1] == '+'))
         {
                 buffer.resize(buffer.length() + 1);
-                for (int c = buffer.length(); c > i; c--)
+                for (int c = buffer.length() - 1; c > i; c--)
                 {
                     buffer[c] = buffer [c - 1];
                 }
                 buffer[i + 1] = '0';
-                break;
         }
     }
+    qDebug() << "after after (0-) " << buffer;
     if (buffer[0] == '-' || buffer[0] == '+')
     {
         buffer.resize(buffer.length() + 1);
@@ -710,6 +721,7 @@ void MainWindow::stringremover()
         }
         buffer[0] = '0';
     }
+    qDebug() << "after first 0 " << buffer;
 }
 
 double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int opstacksize)
