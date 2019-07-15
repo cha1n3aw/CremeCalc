@@ -652,18 +652,6 @@ void MainWindow::stringremover()
             i--;
         }
     }
-    for (int i = 0; i < buffer.length(); i++)
-    {
-        if (buffer[i] == ' ')
-        {
-            for (int c = i; c < buffer.length(); c++)
-            {
-                buffer[c] = buffer[c + 1];
-            }
-            buffer.resize(buffer.length() - 1);
-            i--;
-        }
-    }
     for (int i = 0; i < buffer.length() - 1; i++)
     {
         if (buffer[i] == '(' && (buffer[i + 1] == '-' || buffer[i + 1] == '+'))
@@ -676,6 +664,15 @@ void MainWindow::stringremover()
                 buffer[i + 1] = '0';
                 break;
         }
+    }
+    if (buffer[0] == '-' || buffer[0] == '+')
+    {
+        buffer.resize(buffer.length() + 1);
+        for (int i = buffer.length() - 1; i >= 0; i--)
+        {
+            buffer[i] = buffer [i - 1];
+        }
+        buffer[0] = '0';
     }
 }
 
