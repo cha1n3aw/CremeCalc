@@ -17,7 +17,7 @@ double brackets(double* digitbuffer, char* opbuffer, int digitstacksize, int ops
 static QStack <double> digitstack; //стек чисел
 static QStack <char> opstack; //стек операторов
 void firewall(string expression);
-string stringremover(string expression); //прототип функции чистки строки от пробелов
+void stringremover(); //прототип функции чистки строки от пробелов
 void string_parsing(string); //прототип функции парсинга стринга
 double stacktobuffer(); //прототип функции вычислений
 void buttons();
@@ -93,12 +93,36 @@ void MainWindow::on_indicator_stateChanged(int arg1)
         ui->indicator->setText("Lucid Theme");
         setStyleSheet("background-color:#d7dae0;"
                       "border: 0px solid #d7dae0;");
+        ui->expression->setStyleSheet("QLabel{"
+                                      "box-sizing: content-box;"
+                                      "border: 2px solid #1c1e24;"
+                                      "border-radius: 18px;"
+                                      "color: #2e313b;"
+                                      "font-family:Trebuchet MS;"
+                                      "font-size:18px;"
+                                      "font-weight:bold;"
+                                      "text-overflow: clip;"
+                                      "background: transparent;"
+                                      "padding-left: 10px;"
+                                      "transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);}");
     }
     else
     {
         ui->indicator->setText("Creme Theme");
         setStyleSheet("background-color:#333333;"
                       "border: 0px solid #333333;");
+        ui->expression->setStyleSheet("QLabel{"
+                                      "box-sizing: content-box;"
+                                      "border: 2px solid #91835a;"
+                                      "border-radius: 18px;"
+                                      "color: #b8ab85;"
+                                      "font-family:Trebuchet MS;"
+                                      "font-size:18px;"
+                                      "font-weight:bold;"
+                                      "text-overflow: clip;"
+                                      "background: transparent;"
+                                      "padding-left: 10px;"
+                                      "transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);}");
     }
 
 }
@@ -156,11 +180,12 @@ void MainWindow::errorwindow()
 
 void MainWindow::result ()
 {
+    qDebug() << buffer;
     error = false;
     QString result;
     if (buffer.length() != 0)
     {
-        buffer = QString::fromStdString(stringremover(buffer.toLocal8Bit().constData()));
+        stringremover();
         string expression = buffer.toLocal8Bit().constData();
         firewall(expression);
         if (!error)
@@ -566,34 +591,76 @@ void firewall(string expression)
     else error = true;
 }
 
-string stringremover(string expression)
+void MainWindow::stringremover()
 {
-    for (unsigned long i = 0; i < expression.length(); i++)
+    QString text = ui->expression->text();
+    QString texttemp;
+    for(int i = 0; i < text.length(); i++)
     {
-        if (expression[i] == ' ')
+        if(text[i] == '=')
         {
-            for (unsigned long c = i; c < expression.length(); c++)
+            int c = 0;
+            for(i = i + 1; i < text.length(); i++)
             {
-                expression[c] = expression[c + 1];
+                texttemp.resize(texttemp.length() + 1);
+                texttemp[c] = text[i];
+                c++;
             }
-            expression.resize(expression.length() - 1);
+            ui->expression->setText(texttemp);
+        }
+    }
+    texttemp.clear();
+    for(int i = 0; i < buffer.length(); i++)
+    {
+        if(buffer[i] == '=')
+        {
+            int c = 0;
+            for(i = i + 1; i < buffer.length(); i++)
+            {
+                texttemp.resize(texttemp.length() + 1);
+                texttemp[c] = buffer[i];
+                c++;
+            }
+            buffer = texttemp;
+        }
+    }
+    for (int i = 0; i < buffer.length(); i++)
+    {
+        if (buffer[i] == ' ')
+        {
+            for (int c = i; c < buffer.length(); c++)
+            {
+                buffer[c] = buffer[c + 1];
+            }
+            buffer.resize(buffer.length() - 1);
             i--;
         }
     }
-    for (unsigned long i = 0; i < expression.length() - 1; i++)
+    for (int i = 0; i < buffer.length(); i++)
     {
-        if (expression[i] == '(' && (expression[i + 1] == '-' || expression[i + 1] == '+'))
+        if (buffer[i] == ' ')
         {
-                expression.resize(expression.length() + 1);
-                for (unsigned long long c = expression.length(); c > i; c--)
+            for (int c = i; c < buffer.length(); c++)
+            {
+                buffer[c] = buffer[c + 1];
+            }
+            buffer.resize(buffer.length() - 1);
+            i--;
+        }
+    }
+    for (int i = 0; i < buffer.length() - 1; i++)
+    {
+        if (buffer[i] == '(' && (buffer[i + 1] == '-' || buffer[i + 1] == '+'))
+        {
+                buffer.resize(buffer.length() + 1);
+                for (int c = buffer.length(); c > i; c--)
                 {
-                    expression[c] = expression [c - 1];
+                    buffer[c] = buffer [c - 1];
                 }
-                expression[i + 1] = '0';
+                buffer[i + 1] = '0';
                 break;
         }
     }
-    return expression;
 }
 
 double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int opstacksize)

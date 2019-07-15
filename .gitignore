@@ -9,11 +9,11 @@
 *.so
 *.dll
 *.dylib
-/.debug
-/.release
 
 # Qt-es
 
+/.debug
+/.release
 /.qmake.cache
 /.qmake.stash
 *.pro.user
@@ -34,3 +34,7 @@ Makefile*
 #QtCtreator Qml
 *.qmlproject.user
 *.qmlproject.user.*
+
+release/
+
+debug/

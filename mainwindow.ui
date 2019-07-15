@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>476</width>
-    <height>271</height>
+    <width>469</width>
+    <height>270</height>
    </rect>
   </property>
   <property name="font">
@@ -1783,7 +1783,7 @@ QPushButton:pressed {
      <string/>
     </property>
     <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="history_2">
@@ -1821,7 +1821,7 @@ QPushButton:pressed {
      <string/>
     </property>
     <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="history_3">
@@ -1859,7 +1859,7 @@ QPushButton:pressed {
      <string/>
     </property>
     <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="savedresult">
@@ -1897,7 +1897,7 @@ QPushButton:pressed {
      <string/>
     </property>
     <property name="alignment">
-     <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QCheckBox" name="indicator">

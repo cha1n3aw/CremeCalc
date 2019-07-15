@@ -29,6 +29,7 @@ private:
     Ui::MainWindow *ui;
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
     void result();
+    void stringremover();
     void errorwindow();
 };
 
