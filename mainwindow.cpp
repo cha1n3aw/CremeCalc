@@ -103,27 +103,30 @@ void MainWindow::on_degrad_stateChanged(int arg1)
 void MainWindow::on_indicator_stateChanged(int arg1)
 {
     QString creme_label = "QLabel{"
-                          "background-color:transparent;"
-                          "color:#91835a;"
-                          "font-family:Trebuchet MS;"
-                          "font-size:16px;"
-                          "font-weight:bold;"
-                          "text-decoration:none;"
-                          "text-shadow:0px 1px 0px #2d2e29;}";
-    QString creme_mainbuttons = "QPushButton {"
+                            "background-color:transparent;"
+                            "color:#91835a;"
+                            "font-family:Trebuchet MS;"
+                            "font-size:16px;"
+                            "font-weight:bold;"
+                            "text-decoration:none;"
+                            "text-shadow:0px 1px 0px #2d2e29;}";
+
+    QString creme_mainbuttons = "QPushButton{"
                             "background-color:#91835a;"
                             "border-radius:16px;"
                             "border:2px solid #333029;"
                             "color:#25261f;"
                             "font-family:Trebuchet MS;"
                             "font-size:16px;"
-                            "font-weight:bold;"
-                            "text-decoration:none;}"
-                            "QPushButton:hover{"
-                            "background-color:#a89a6f;}"
-                            "QPushButton:pressed"
-                            "{position:relative;"
-                            "top:1px;}";
+                            "font-weight:bold;}"
+                            "QPushButton:hover{background-color:#a89a6f;}";
+
+    QString creme_opbuttons = "QPushButton{background-color:#b8ab85;"
+                            "border-radius:18px;border:2px solid #333029;color:#505739;"
+                            "font-family:Trebuchet MS;font-size:16px;font-weight:bold;}"
+                            "QPushButton:hover{background-color:#a89a6f;}"
+                            "QPushButton:pressed{background-color: #ccc2a6;}";
+
     QString lucid_label = "QLabel{"
                             "background-color:transparent;"
                             "color:#2e313b;"
@@ -188,6 +191,32 @@ void MainWindow::on_indicator_stateChanged(int arg1)
         ui->btmc->setStyleSheet(creme_mainbuttons);
         ui->btclr->setStyleSheet(creme_mainbuttons);
         ui->bteq->setStyleSheet(creme_mainbuttons);
+        ui->bt0->setStyleSheet(creme_opbuttons);
+        ui->bt00->setStyleSheet(creme_opbuttons);
+        ui->bt1->setStyleSheet(creme_opbuttons);
+        ui->bt2->setStyleSheet(creme_opbuttons);
+        ui->bt3->setStyleSheet(creme_opbuttons);
+        ui->bt4->setStyleSheet(creme_opbuttons);
+        ui->bt5->setStyleSheet(creme_opbuttons);
+        ui->bt6->setStyleSheet(creme_opbuttons);
+        ui->bt7->setStyleSheet(creme_opbuttons);
+        ui->bt8->setStyleSheet(creme_opbuttons);
+        ui->bt9->setStyleSheet(creme_opbuttons);
+        ui->btpl->setStyleSheet(creme_opbuttons);
+        ui->btmin->setStyleSheet(creme_opbuttons);
+        ui->btmult->setStyleSheet(creme_opbuttons);
+        ui->btdiv->setStyleSheet(creme_opbuttons);
+        ui->btpow->setStyleSheet(creme_opbuttons);
+        ui->btroot->setStyleSheet(creme_opbuttons);
+        ui->sqroot->setStyleSheet(creme_opbuttons);
+        ui->btdot->setStyleSheet(creme_opbuttons);
+        ui->btopen->setStyleSheet(creme_opbuttons);
+        ui->btclose->setStyleSheet(creme_opbuttons);
+        ui->bte->setStyleSheet(creme_opbuttons);
+        ui->btp->setStyleSheet(creme_opbuttons);
+        ui->btlog->setStyleSheet(creme_opbuttons);
+        ui->btlg->setStyleSheet(creme_opbuttons);
+        ui->btln->setStyleSheet(creme_opbuttons);
     }
 
 }
@@ -245,7 +274,6 @@ void MainWindow::errorwindow()
 
 void MainWindow::result ()
 {
-    qDebug() << buffer;
     error = false;
     QString result;
     if (buffer.length() != 0)
