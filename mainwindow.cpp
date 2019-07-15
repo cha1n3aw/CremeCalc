@@ -36,13 +36,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
     setWindowTitle("CremeCalc");
-
-    ui->savedresult->setWordWrap(true);
-    ui->history_1->setWordWrap(true);
-    ui->history_2->setWordWrap(true);
-    ui->history_3->setWordWrap(true);
-    ui->history_4->setWordWrap(true);
-
     connect(ui->bt0, SIGNAL(clicked()), this, SLOT(buttons()));
     connect(ui->bt1, SIGNAL(clicked()), this, SLOT(buttons()));
     connect(ui->bt2, SIGNAL(clicked()), this, SLOT(buttons()));
@@ -102,57 +95,56 @@ void MainWindow::on_degrad_stateChanged(int arg1)
 
 void MainWindow::on_indicator_stateChanged(int arg1)
 {
-    QString creme_label = "QLabel{"
-                            "background-color:transparent;"
-                            "color:#91835a;"
-                            "font-family:Trebuchet MS;"
-                            "font-size:16px;"
-                            "font-weight:bold;"
-                            "text-decoration:none;"
-                            "text-shadow:0px 1px 0px #2d2e29;}";
+    QString creme_label = "QLabel{background-color:transparent;color:#91835a;font-family:Trebuchet MS;font-size:16px;font-weight:bold;"
+"text-decoration:none;text-shadow:0px 1px 0px #2d2e29;}";
 
-    QString creme_mainbuttons = "QPushButton{"
-                            "background-color:#91835a;"
-                            "border-radius:16px;"
-                            "border:2px solid #333029;"
-                            "color:#25261f;"
-                            "font-family:Trebuchet MS;"
-                            "font-size:16px;"
-                            "font-weight:bold;}"
-                            "QPushButton:hover{background-color:#a89a6f;}";
+    QString creme_mainbuttons = "QPushButton{background-color:#91835a;border-radius:16px;border:2px solid #333029;"
+"color:#25261f;font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#a89a6f;}";
 
-    QString creme_opbuttons = "QPushButton{background-color:#b8ab85;"
-                            "border-radius:18px;border:2px solid #333029;color:#505739;"
-                            "font-family:Trebuchet MS;font-size:16px;font-weight:bold;}"
-                            "QPushButton:hover{background-color:#a89a6f;}"
-                            "QPushButton:pressed{background-color: #ccc2a6;}";
+    QString creme_opbuttons = "QPushButton{background-color:#b8ab85;border-radius:18px;border:2px solid #333029;color:#505739;"
+"font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#a89a6f;}"
+"QPushButton:pressed{background-color: #ccc2a6;}";
 
-    QString lucid_label = "QLabel{"
-                            "background-color:transparent;"
-                            "color:#2e313b;"
-                            "font-family:Trebuchet MS;"
-                            "font-size:16px;"
-                            "font-weight:bold;"
-                            "text-decoration:none;"
-                            "text-shadow:0px 1px 0px #2d2e29;}";
+    QString creme_expression = "QLabel{box-sizing: content-box;border: 2px solid #91835a;border-radius: 18px;"
+"color: #b8ab85;font-family:Trebuchet MS;font-size:18px;font-weight:bold;text-overflow: clip;background: transparent;"
+"padding-left: 10px;transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);}";
+
+    QString creme_degrees = "QCheckBox::indicator:checked{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
+"QCheckBox::indicator:checked:pressed{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
+"QCheckBox::indicator:checked:hover{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
+"QCheckBox::indicator:unchecked{border:0px solid #25261f;border-radius:5px;background-color:transparent;color:#91835a;}"
+"QCheckBox::indicator:unchecked:pressed{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
+"QCheckBox::indicator:unchecked:hover{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
+"QCheckBox{border-radius:16px;background-color:#91835a;spacing: 18px;color:#25261f;"
+          "border:2px solid #333029;font-family:Trebuchet MS;font-size:14px;font-weight:bold;"
+          "padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;}";
+
+    QString creme_themebutton = "QCheckBox::indicator:checked{border:1px solid #25261f;border-radius:5px;background-color: #d7dae0;}"
+"QCheckBox::indicator:checked:pressed{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
+"QCheckBox::indicator:checked:hover{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
+"QCheckBox::indicator:unchecked{border:1px solid #25261f;border-radius:5px;background-color:transparent;color:#91835a;}"
+"QCheckBox::indicator:unchecked:pressed{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
+"QCheckBox::indicator:unchecked:hover{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
+"QCheckBox{border-radius:16px;background-color:#91835a;spacing:5px;color:#25261f;border:2px solid #333029;"
+"font-family:Trebuchet MS;font-size:14px;font-weight:bold;padding-left: 5px;padding-right: 5px;padding-top: 5px;padding-bottom: 5px;}";
+
+    QString lucid_label = "QLabel{background-color:transparent;color:#2e313b;font-family:Trebuchet MS;font-size:16px;"
+"font-weight:bold;text-decoration:none;text-shadow:0px 1px 0px #2d2e29;}";
+
+    QString lucid_expression = "QLabel{box-sizing: content-box;border: 2px solid #1c1e24;border-radius: 18px;"
+"color: #2e313b;font-family:Trebuchet MS;font-size:18px;font-weight:bold;text-overflow: clip;background: transparent;"
+"padding-left: 10px;transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);}";
+
+    QString lucid_mainbuttons;
+    QString lucid_opbuttons;
+    QString lucid_degrees;
+    QString lucid_themebutton;
 
     if (arg1 == 2)
     {
         ui->indicator->setText("Lucid Theme");
-        setStyleSheet("background-color:#d7dae0;"
-                      "border: 0px solid #d7dae0;");
-        ui->expression->setStyleSheet("QLabel{"
-                                      "box-sizing: content-box;"
-                                      "border: 2px solid #1c1e24;"
-                                      "border-radius: 18px;"
-                                      "color: #2e313b;"
-                                      "font-family:Trebuchet MS;"
-                                      "font-size:18px;"
-                                      "font-weight:bold;"
-                                      "text-overflow: clip;"
-                                      "background: transparent;"
-                                      "padding-left: 10px;"
-                                      "transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);}");
+        setStyleSheet("background-color:#d7dae0;border:0px solid #d7dae0;");
+        ui->expression->setStyleSheet(lucid_expression);
         ui->history_1->setStyleSheet(lucid_label);
         ui->history_2->setStyleSheet(lucid_label);
         ui->history_3->setStyleSheet(lucid_label);
@@ -161,64 +153,30 @@ void MainWindow::on_indicator_stateChanged(int arg1)
     }
     else
     {
-        ui->indicator->setText("Creme Theme");
-        setStyleSheet("background-color:#333333;"
-                      "border: 0px solid #333333;");
-        ui->expression->setStyleSheet("QLabel{"
-                                      "box-sizing: content-box;"
-                                      "border: 2px solid #91835a;"
-                                      "border-radius: 18px;"
-                                      "color: #b8ab85;"
-                                      "font-family:Trebuchet MS;"
-                                      "font-size:18px;"
-                                      "font-weight:bold;"
-                                      "text-overflow: clip;"
-                                      "background: transparent;"
-                                      "padding-left: 10px;"
-                                      "transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);}");
-        ui->history_1->setStyleSheet(creme_label);
-        ui->history_2->setStyleSheet(creme_label);
-        ui->history_3->setStyleSheet(creme_label);
-        ui->history_4->setStyleSheet(creme_label);
-        ui->savedresult->setStyleSheet(creme_label);
-        ui->btdel->setStyleSheet(creme_mainbuttons);
-        ui->bttan->setStyleSheet(creme_mainbuttons);
-        ui->btctan->setStyleSheet(creme_mainbuttons);
-        ui->btsin->setStyleSheet(creme_mainbuttons);
-        ui->btcos->setStyleSheet(creme_mainbuttons);
-        ui->btms->setStyleSheet(creme_mainbuttons);
-        ui->btmr->setStyleSheet(creme_mainbuttons);
-        ui->btmc->setStyleSheet(creme_mainbuttons);
-        ui->btclr->setStyleSheet(creme_mainbuttons);
-        ui->bteq->setStyleSheet(creme_mainbuttons);
-        ui->bt0->setStyleSheet(creme_opbuttons);
-        ui->bt00->setStyleSheet(creme_opbuttons);
-        ui->bt1->setStyleSheet(creme_opbuttons);
-        ui->bt2->setStyleSheet(creme_opbuttons);
-        ui->bt3->setStyleSheet(creme_opbuttons);
-        ui->bt4->setStyleSheet(creme_opbuttons);
-        ui->bt5->setStyleSheet(creme_opbuttons);
-        ui->bt6->setStyleSheet(creme_opbuttons);
-        ui->bt7->setStyleSheet(creme_opbuttons);
-        ui->bt8->setStyleSheet(creme_opbuttons);
-        ui->bt9->setStyleSheet(creme_opbuttons);
-        ui->btpl->setStyleSheet(creme_opbuttons);
-        ui->btmin->setStyleSheet(creme_opbuttons);
-        ui->btmult->setStyleSheet(creme_opbuttons);
-        ui->btdiv->setStyleSheet(creme_opbuttons);
-        ui->btpow->setStyleSheet(creme_opbuttons);
-        ui->btroot->setStyleSheet(creme_opbuttons);
-        ui->sqroot->setStyleSheet(creme_opbuttons);
-        ui->btdot->setStyleSheet(creme_opbuttons);
-        ui->btopen->setStyleSheet(creme_opbuttons);
-        ui->btclose->setStyleSheet(creme_opbuttons);
-        ui->bte->setStyleSheet(creme_opbuttons);
-        ui->btp->setStyleSheet(creme_opbuttons);
-        ui->btlog->setStyleSheet(creme_opbuttons);
-        ui->btlg->setStyleSheet(creme_opbuttons);
-        ui->btln->setStyleSheet(creme_opbuttons);
+        setStyleSheet("background-color:#333333;border:0px solid #333333;");
+        ui->indicator->setText("Creme Theme"); ui->expression->setStyleSheet(creme_expression);
+        ui->history_1->setStyleSheet(creme_label); ui->history_2->setStyleSheet(creme_label);
+        ui->history_3->setStyleSheet(creme_label); ui->history_4->setStyleSheet(creme_label);
+        ui->savedresult->setStyleSheet(creme_label); ui->degrad->setStyleSheet(creme_degrees);
+        ui->btdel->setStyleSheet(creme_mainbuttons); ui->bttan->setStyleSheet(creme_mainbuttons);
+        ui->btctan->setStyleSheet(creme_mainbuttons); ui->btsin->setStyleSheet(creme_mainbuttons);
+        ui->btcos->setStyleSheet(creme_mainbuttons); ui->btms->setStyleSheet(creme_mainbuttons);
+        ui->btmr->setStyleSheet(creme_mainbuttons); ui->btmc->setStyleSheet(creme_mainbuttons);
+        ui->btclr->setStyleSheet(creme_mainbuttons); ui->bteq->setStyleSheet(creme_mainbuttons);
+        ui->bt0->setStyleSheet(creme_opbuttons); ui->bt00->setStyleSheet(creme_opbuttons);
+        ui->bt1->setStyleSheet(creme_opbuttons); ui->bt2->setStyleSheet(creme_opbuttons);
+        ui->bt3->setStyleSheet(creme_opbuttons); ui->bt4->setStyleSheet(creme_opbuttons);
+        ui->bt5->setStyleSheet(creme_opbuttons); ui->bt6->setStyleSheet(creme_opbuttons);
+        ui->bt7->setStyleSheet(creme_opbuttons); ui->bt8->setStyleSheet(creme_opbuttons);
+        ui->bt9->setStyleSheet(creme_opbuttons); ui->btpl->setStyleSheet(creme_opbuttons);
+        ui->btmin->setStyleSheet(creme_opbuttons); ui->btmult->setStyleSheet(creme_opbuttons);
+        ui->btdiv->setStyleSheet(creme_opbuttons); ui->btpow->setStyleSheet(creme_opbuttons);
+        ui->btroot->setStyleSheet(creme_opbuttons); ui->sqroot->setStyleSheet(creme_opbuttons);
+        ui->btdot->setStyleSheet(creme_opbuttons); ui->btopen->setStyleSheet(creme_opbuttons);
+        ui->btclose->setStyleSheet(creme_opbuttons); ui->bte->setStyleSheet(creme_opbuttons);
+        ui->btp->setStyleSheet(creme_opbuttons); ui->btlog->setStyleSheet(creme_opbuttons);
+        ui->btlg->setStyleSheet(creme_opbuttons); ui->btln->setStyleSheet(creme_opbuttons);
     }
-
 }
 
 void MainWindow::buttons()
