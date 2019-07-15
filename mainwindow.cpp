@@ -41,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->history_1->setWordWrap(true);
     ui->history_2->setWordWrap(true);
     ui->history_3->setWordWrap(true);
+    ui->history_4->setWordWrap(true);
 
     connect(ui->bt0, SIGNAL(clicked()), this, SLOT(buttons()));
     connect(ui->bt1, SIGNAL(clicked()), this, SLOT(buttons()));
@@ -217,6 +218,7 @@ void MainWindow::result ()
                     }
                     buffer = buffer + "=" + result;
                     ui->expression->setText(ui->expression->text() + "=" + result);
+                    ui->history_4->setText(ui->history_3->text());
                     ui->history_3->setText(ui->history_2->text());
                     ui->history_2->setText(ui->history_1->text());
                     ui->history_1->setText(result);
