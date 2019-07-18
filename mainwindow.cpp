@@ -359,7 +359,7 @@ void MainWindow::write(QString action)
         }
 
     }
-    if (action != "=" && action != 'r' && action != 'g')
+    if (action != "=" && action != "r" && action != "g")
     {
         if (action == "⌫")
         {
