@@ -281,7 +281,7 @@ void MainWindow::result ()
 
 void MainWindow::on_undo_clicked()
 {
-    if (history.size() > 0 && texthistory.size() > 0)
+    if (history.size() > 1 && texthistory.size() > 1)
     {
         buffer = QString::fromStdString(history[history.size() - 1]);
         history.resize(history.size() - 1);
