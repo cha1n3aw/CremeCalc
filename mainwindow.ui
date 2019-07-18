@@ -49,18 +49,13 @@
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
 	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -97,18 +92,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
 	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -145,18 +135,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
 	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -193,18 +178,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
 	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -241,18 +221,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
 	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -289,18 +264,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
 	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -337,18 +307,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
 	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -385,18 +350,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
 	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -433,18 +393,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
 	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -481,18 +436,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
 	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -572,18 +522,13 @@ QPushButton:pressed
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -620,18 +565,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -668,18 +608,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -716,18 +651,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -764,18 +694,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -812,18 +737,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -860,18 +780,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -908,18 +823,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -956,18 +866,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1176,18 +1081,13 @@ QPushButton:pressed
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1224,18 +1124,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1272,18 +1167,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1320,18 +1210,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1564,10 +1449,10 @@ padding-left: 10px;
    <widget class="QPushButton" name="btdel">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>290</x>
       <y>60</y>
-      <width>120</width>
-      <height>40</height>
+      <width>39</width>
+      <height>39</height>
      </rect>
     </property>
     <property name="font">
@@ -1626,18 +1511,13 @@ QPushButton:pressed
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1674,18 +1554,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
-	font-size:16px;
+	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1722,18 +1597,13 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QPushButton 
 {
-	box-shadow: 0px 1px 0px 0px #1c1b18;
 	background-color:#b8ab85;
 	border-radius:18px;
 	border:2px solid #333029;
-	display:inline-block;
-	cursor:pointer;
 	color:#505739;
 	font-family:Trebuchet MS;
 	font-size:18px;
 	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -2065,6 +1935,39 @@ QCheckBox {
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="undo">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>60</y>
+      <width>79</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color:#91835a;
+	border-radius:16px;
+	border:2px solid #333029;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed
+{
+	position:relative;
+	top:1px;
+}</string>
+    </property>
+    <property name="text">
+     <string>UNDO</string>
     </property>
    </widget>
   </widget>

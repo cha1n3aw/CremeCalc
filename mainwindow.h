@@ -25,6 +25,8 @@ private slots:
     void on_indicator_stateChanged(int arg1);
     void on_degrad_stateChanged(int arg1);
 
+    void on_undo_clicked();
+
 private:
     Ui::MainWindow *ui;
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
