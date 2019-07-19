@@ -25,10 +25,12 @@ void errorwindow();
 static QStack <double> digitstack; //стек чисел
 static QStack <char> opstack; //стек операторов
 static QString buffer;
+static QString savedresult;
 static bool powstatus = false;
 static bool error = false;
 static bool bracketstatus = false;
-static bool radians;
+static bool radians = false;
+static bool berrytheme = false;
 static vector <string> history;
 static vector <string> texthistory;
 static unsigned long long undostep = 0;
@@ -39,9 +41,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
-    setWindowTitle("CremeCalc");
-    ui->expression->setToolTip("This is your expression");
-    ui->savedresult->setToolTip("The result you've saved via MS button");
+    setWindowTitle("berry&creme calc");
+    ui->expression->setToolTip("this is your expression!");
 
     connect(ui->bt0, SIGNAL(clicked()), this, SLOT(buttons()));
     connect(ui->bt1, SIGNAL(clicked()), this, SLOT(buttons()));
@@ -88,10 +89,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_indicator_stateChanged(int arg1)
+void MainWindow::on_theme_clicked()
 {
     QString creme_label = "QLabel{background-color:transparent;color:#91835a;font-family:Trebuchet MS;font-size:16px;font-weight:bold;"
 "text-decoration:none;text-shadow:0px 1px 0px #2d2e29;}";
+
+    QString creme_expression = "QLabel{border: 3px solid #91835a;border-radius: 18px;"
+"color: #b8ab85;font-family:Trebuchet MS;font-size:18px;font-weight:bold;background: transparent;padding-left: 10px;padding-top: 1px;}";
 
     QString creme_mainbuttons = "QPushButton{background-color:#91835a;border-radius:16px;border:2px solid #333029;"
 "color:#25261f;font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#a89a6f;}"
@@ -100,98 +104,59 @@ void MainWindow::on_indicator_stateChanged(int arg1)
     QString creme_opbuttons = "QPushButton{background-color:#b8ab85;border-radius:18px;border:2px solid #333029;color:#505739;"
 "font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#a89a6f;}"
 "QPushButton:pressed{background-color: #ccc2a6;}";
-
-    QString creme_expression = "QLabel{border: 2px solid #91835a;border-radius: 18px;"
-"color: #b8ab85;font-family:Trebuchet MS;font-size:18px;font-weight:bold;background: transparent;padding-left: 10px;}";
-
-    QString creme_degrees = "QCheckBox::indicator:checked{border:2px solid #333029;border-radius:5px;background-color:transparent;}"
-"QCheckBox::indicator:checked:pressed{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
-"QCheckBox::indicator:checked:hover{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
-"QCheckBox::indicator:unchecked{border:0px solid #25261f;border-radius:5px;background-color:transparent;color:#91835a;}"
-"QCheckBox::indicator:unchecked:pressed{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
-"QCheckBox::indicator:unchecked:hover{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
-"QCheckBox{border-radius:16px;background-color:#91835a;spacing: 18px;color:#25261f;"
-          "border:2px solid #333029;font-family:Trebuchet MS;font-size:14px;font-weight:bold;"
-          "padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;}";
-
-    QString creme_themebutton = "QCheckBox::indicator:checked{border:2px solid #333029;border-radius:5px;background-color: #d7dae0;}"
-"QCheckBox::indicator:checked:pressed{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
-"QCheckBox::indicator:checked:hover{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
-"QCheckBox::indicator:unchecked{border:1px solid #25261f;border-radius:5px;background-color:transparent;color:#91835a;}"
-"QCheckBox::indicator:unchecked:pressed{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
-"QCheckBox::indicator:unchecked:hover{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
-"QCheckBox{border-radius:16px;background-color:#91835a;spacing:5px;color:#25261f;border:2px solid #333029;"
-"font-family:Trebuchet MS;font-size:14px;font-weight:bold;padding-left: 5px;padding-right: 5px;padding-top: 5px;padding-bottom: 5px;}";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    QString lucid_label = "QLabel{background-color:transparent;color:#2e313b;font-family:Trebuchet MS;font-size:16px;"
-"font-weight:bold;text-decoration:none;text-shadow:0px 1px 0px #2d2e29;}";
+    QString berry_label = "QLabel{background-color:transparent;color:#191136;font-family:Trebuchet MS;font-size:16px;"
+"font-weight:bold;}";
 
-    QString lucid_expression = "QLabel{border: 2px solid #a0dadb;border-radius: 18px;"
-"color: #2e313b;font-family:Trebuchet MS;font-size:18px;font-weight:bold;background: transparent;padding-left: 10px;}";
+    QString berry_expression = "QLabel{border: 3px solid #a83151;border-radius: 18px;"
+"color: #191136;font-family:Trebuchet MS;font-size:18px;font-weight:bold;background: transparent;padding-left: 10px;padding-top: 1px;}";
 
-    QString lucid_mainbuttons = "QPushButton{background-color:#d5e38c;border-radius:16px;border:2px solid #cccccc;"
-"color:#25261f;font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#cbe3c3;}"
+    QString berry_mainbuttons = "QPushButton{background-color:#a83151;border-radius:16px;border:2px solid #fae9d9;"
+"color:#fae9d9;font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#e887a0;}"
 "QPushButton:pressed{background-color: #cccccc;}"; //#d5e38c
 
-    QString lucid_opbuttons = "QPushButton{background-color:#a0dadb;border-radius:18px;border:2px solid #cccccc;color:#505739;"
+    QString berry_opbuttons = "QPushButton{background-color:#191136;border-radius:18px;border:2px solid #fae9d9;color:#fae9d9;"
 "font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#cbe9eb;}"
 "QPushButton:pressed{background-color: #cccccc;}"; //#a0dadb
 
-    QString lucid_degrees = "QCheckBox::indicator:checked{border:2px solid #cccccc;border-radius:5px;background-color:transparent;}"
-"QCheckBox::indicator:checked:pressed{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
-"QCheckBox::indicator:checked:hover{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
-"QCheckBox::indicator:unchecked{border:0px solid #25261f;border-radius:5px;background-color:transparent;color:#91835a;}"
-"QCheckBox::indicator:unchecked:pressed{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
-"QCheckBox::indicator:unchecked:hover{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
-"QCheckBox{border-radius:16px;background-color:#d5e38c;spacing: 18px;color:#25261f;"
-          "border:2px solid #cccccc;font-family:Trebuchet MS;font-size:14px;font-weight:bold;"
-          "padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;}"; //#d5e38c
-
-    QString lucid_themebutton = "QCheckBox::indicator:checked{border:1px solid #cccccc;border-radius:5px;background-color: #d7dae0;}"
-"QCheckBox::indicator:checked:pressed{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
-"QCheckBox::indicator:checked:hover{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
-"QCheckBox::indicator:unchecked{border:1px solid #25261f;border-radius:5px;background-color:transparent;color:#91835a;}"
-"QCheckBox::indicator:unchecked:pressed{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
-"QCheckBox::indicator:unchecked:hover{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
-"QCheckBox{border-radius:16px;background-color:#d5e38c;spacing:5px;color:#25261f;border:2px solid #cccccc;"
-"font-family:Trebuchet MS;font-size:14px;font-weight:bold;padding-left: 5px;padding-right: 5px;padding-top: 5px;padding-bottom: 5px;}"; //#d5e38c
-
-
-    if (arg1 == 2)
+    if (!berrytheme)
     {
-        setStyleSheet("background-color:#d7dae0;border:0px solid #d7dae0;");
-        ui->indicator->setText("Lucid Theme"); ui->expression->setStyleSheet(lucid_expression);
-        ui->history_1->setStyleSheet(lucid_label); ui->history_2->setStyleSheet(lucid_label);
-        ui->history_3->setStyleSheet(lucid_label); ui->history_4->setStyleSheet(lucid_label);
-        ui->savedresult->setStyleSheet(lucid_label); ui->degrad->setStyleSheet(lucid_degrees);
-        ui->btdel->setStyleSheet(lucid_mainbuttons); ui->bttan->setStyleSheet(lucid_mainbuttons);
-        ui->btctan->setStyleSheet(lucid_mainbuttons); ui->btsin->setStyleSheet(lucid_mainbuttons);
-        ui->btcos->setStyleSheet(lucid_mainbuttons); ui->btms->setStyleSheet(lucid_mainbuttons);
-        ui->btmr->setStyleSheet(lucid_mainbuttons); ui->btmc->setStyleSheet(lucid_mainbuttons);
-        ui->btclr->setStyleSheet(lucid_mainbuttons); ui->bteq->setStyleSheet(lucid_mainbuttons);
-        ui->bt0->setStyleSheet(lucid_opbuttons); ui->bt00->setStyleSheet(lucid_opbuttons);
-        ui->bt1->setStyleSheet(lucid_opbuttons); ui->bt2->setStyleSheet(lucid_opbuttons);
-        ui->bt3->setStyleSheet(lucid_opbuttons); ui->bt4->setStyleSheet(lucid_opbuttons);
-        ui->bt5->setStyleSheet(lucid_opbuttons); ui->bt6->setStyleSheet(lucid_opbuttons);
-        ui->bt7->setStyleSheet(lucid_opbuttons); ui->bt8->setStyleSheet(lucid_opbuttons);
-        ui->bt9->setStyleSheet(lucid_opbuttons); ui->btpl->setStyleSheet(lucid_opbuttons);
-        ui->btmin->setStyleSheet(lucid_opbuttons); ui->btmult->setStyleSheet(lucid_opbuttons);
-        ui->btdiv->setStyleSheet(lucid_opbuttons); ui->btpow->setStyleSheet(lucid_opbuttons);
-        ui->btroot->setStyleSheet(lucid_opbuttons); ui->sqroot->setStyleSheet(lucid_opbuttons);
-        ui->btdot->setStyleSheet(lucid_opbuttons); ui->btopen->setStyleSheet(lucid_opbuttons);
-        ui->btclose->setStyleSheet(lucid_opbuttons); ui->bte->setStyleSheet(lucid_opbuttons);
-        ui->btp->setStyleSheet(lucid_opbuttons); ui->btlog->setStyleSheet(lucid_opbuttons);
-        ui->btlg->setStyleSheet(lucid_opbuttons); ui->btln->setStyleSheet(lucid_opbuttons);
-        ui->undo->setStyleSheet(lucid_mainbuttons); ui->redo->setStyleSheet(lucid_mainbuttons);
-        ui->indicator->setStyleSheet(lucid_themebutton);
+        setStyleSheet("background-color:#fae9d9;border:0px solid #fae9d9;");
+        ui->theme->setText("berry"); ui->expression->setStyleSheet(berry_expression);
+        ui->history_1->setStyleSheet(berry_label); ui->history_2->setStyleSheet(berry_label);
+        ui->history_3->setStyleSheet(berry_label); ui->history_4->setStyleSheet(berry_label);
+        ui->history_5->setStyleSheet(berry_label); ui->degrees->setStyleSheet(berry_mainbuttons);
+        ui->history_6->setStyleSheet(berry_label); ui->history_7->setStyleSheet(berry_label);
+        ui->btdel->setStyleSheet(berry_mainbuttons); ui->bttan->setStyleSheet(berry_mainbuttons);
+        ui->btctan->setStyleSheet(berry_mainbuttons); ui->btsin->setStyleSheet(berry_mainbuttons);
+        ui->btcos->setStyleSheet(berry_mainbuttons); ui->btms->setStyleSheet(berry_mainbuttons);
+        ui->btmr->setStyleSheet(berry_mainbuttons); ui->btmc->setStyleSheet(berry_mainbuttons);
+        ui->btclr->setStyleSheet(berry_mainbuttons); ui->bteq->setStyleSheet(berry_mainbuttons);
+        ui->bt0->setStyleSheet(berry_opbuttons); ui->bt00->setStyleSheet(berry_opbuttons);
+        ui->bt1->setStyleSheet(berry_opbuttons); ui->bt2->setStyleSheet(berry_opbuttons);
+        ui->bt3->setStyleSheet(berry_opbuttons); ui->bt4->setStyleSheet(berry_opbuttons);
+        ui->bt5->setStyleSheet(berry_opbuttons); ui->bt6->setStyleSheet(berry_opbuttons);
+        ui->bt7->setStyleSheet(berry_opbuttons); ui->bt8->setStyleSheet(berry_opbuttons);
+        ui->bt9->setStyleSheet(berry_opbuttons); ui->btpl->setStyleSheet(berry_opbuttons);
+        ui->btmin->setStyleSheet(berry_opbuttons); ui->btmult->setStyleSheet(berry_opbuttons);
+        ui->btdiv->setStyleSheet(berry_opbuttons); ui->btpow->setStyleSheet(berry_opbuttons);
+        ui->btroot->setStyleSheet(berry_opbuttons); ui->sqroot->setStyleSheet(berry_opbuttons);
+        ui->btdot->setStyleSheet(berry_opbuttons); ui->btopen->setStyleSheet(berry_opbuttons);
+        ui->btclose->setStyleSheet(berry_opbuttons); ui->bte->setStyleSheet(berry_opbuttons);
+        ui->btp->setStyleSheet(berry_opbuttons); ui->btlog->setStyleSheet(berry_opbuttons);
+        ui->btlg->setStyleSheet(berry_opbuttons); ui->btln->setStyleSheet(berry_opbuttons);
+        ui->undo->setStyleSheet(berry_mainbuttons); ui->redo->setStyleSheet(berry_mainbuttons);
+        ui->theme->setStyleSheet(berry_mainbuttons);
+        berrytheme = true;
     }
     else
     {
         setStyleSheet("background-color:#333333;border:0px solid #333333;");
-        ui->indicator->setText("Creme Theme"); ui->expression->setStyleSheet(creme_expression);
+        ui->theme->setText("creme"); ui->expression->setStyleSheet(creme_expression);
         ui->history_1->setStyleSheet(creme_label); ui->history_2->setStyleSheet(creme_label);
         ui->history_3->setStyleSheet(creme_label); ui->history_4->setStyleSheet(creme_label);
-        ui->savedresult->setStyleSheet(creme_label); ui->degrad->setStyleSheet(creme_degrees);
+        ui->history_5->setStyleSheet(creme_label); ui->degrees->setStyleSheet(creme_mainbuttons);
+        ui->history_6->setStyleSheet(creme_label); ui->history_7->setStyleSheet(creme_mainbuttons);
         ui->btdel->setStyleSheet(creme_mainbuttons); ui->bttan->setStyleSheet(creme_mainbuttons);
         ui->btctan->setStyleSheet(creme_mainbuttons); ui->btsin->setStyleSheet(creme_mainbuttons);
         ui->btcos->setStyleSheet(creme_mainbuttons); ui->btms->setStyleSheet(creme_mainbuttons);
@@ -211,9 +176,11 @@ void MainWindow::on_indicator_stateChanged(int arg1)
         ui->btp->setStyleSheet(creme_opbuttons); ui->btlog->setStyleSheet(creme_opbuttons);
         ui->btlg->setStyleSheet(creme_opbuttons); ui->btln->setStyleSheet(creme_opbuttons);
         ui->undo->setStyleSheet(creme_mainbuttons); ui->redo->setStyleSheet(creme_mainbuttons);
-        ui->indicator->setStyleSheet(creme_themebutton);
+        ui->theme->setStyleSheet(creme_mainbuttons);
+        berrytheme = false;
     }
 }
+
 
 void MainWindow::buttons()
 {
@@ -251,10 +218,10 @@ void MainWindow::nondefaultop()
         {
             temp1[temp1.length() - 1 - i] = temp[i];
         }
-        ui->savedresult->setText(temp1);
+        savedresult = temp1;
     }
-    if (op == "MR") write(ui->savedresult->text());
-    if (op == "MC") ui->savedresult->setText("");
+    if (op == "MR") write(savedresult);
+    if (op == "MC") savedresult.clear();
 }
 
 void MainWindow::errorwindow()
@@ -298,6 +265,9 @@ void MainWindow::result ()
                     history.push_back(buffer.toLocal8Bit().constData());
                     texthistory.push_back(ui->expression->text().toLocal8Bit().constData());
                     undostep++;
+                    ui->history_7->setText(ui->history_6->text());
+                    ui->history_6->setText(ui->history_5->text());
+                    ui->history_5->setText(ui->history_4->text());
                     ui->history_4->setText(ui->history_3->text());
                     ui->history_3->setText(ui->history_2->text());
                     ui->history_2->setText(ui->history_1->text());
@@ -309,24 +279,19 @@ void MainWindow::result ()
     }
 }
 
-void MainWindow::on_degrad_stateChanged(int arg1)
+void MainWindow::on_degrees_clicked()
 {
-    if (arg1 == 2)
+    if (!radians)
     {
-        ui->degrad->setText("Radians");
         radians = true;
+        ui->degrees->setText("radians");
     }
     else
     {
-        ui->degrad->setText("Degrees");
+        ui->degrees->setText("degrees");
         radians = false;
     }
 }
-
-//void QToolTip::showText()
-//{
-
-//}
 
 void MainWindow::on_undo_clicked()
 {

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>469</width>
-    <height>270</height>
+    <width>499</width>
+    <height>269</height>
    </rect>
   </property>
   <property name="font">
@@ -462,8 +462,8 @@ QPushButton:pressed {
      <rect>
       <x>10</x>
       <y>220</y>
-      <width>120</width>
-      <height>40</height>
+      <width>119</width>
+      <height>39</height>
      </rect>
     </property>
     <property name="font">
@@ -485,7 +485,6 @@ QPushButton:pressed {
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -911,7 +910,6 @@ QPushButton:pressed {
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -950,7 +948,6 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -989,7 +986,6 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1028,7 +1024,6 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1239,7 +1234,6 @@ QPushButton:pressed {
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1278,7 +1272,6 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1317,7 +1310,6 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1356,7 +1348,6 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1370,10 +1361,10 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
    <widget class="QLabel" name="expression">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>12</x>
       <y>10</y>
-      <width>431</width>
-      <height>41</height>
+      <width>477</width>
+      <height>39</height>
      </rect>
     </property>
     <property name="maximumSize">
@@ -1393,17 +1384,14 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
     <property name="styleSheet">
      <string notr="true">QLabel
 {
-  box-sizing: content-box;
-  border: 2px solid #91835a;
-  border-radius: 18px;
+border: 3px solid #91835a;
+border-radius: 18px;
 color: #b8ab85;
 font-family:Trebuchet MS;
 font-size:18px;
 font-weight:bold;
-  text-overflow: clip;
-  background: transparent;
+background: transparent;
 padding-left: 10px;
-  transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
 }</string>
     </property>
     <property name="text">
@@ -1438,7 +1426,6 @@ padding-left: 10px;
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1583,7 +1570,7 @@ QPushButton:pressed {
      <rect>
       <x>340</x>
       <y>60</y>
-      <width>101</width>
+      <width>151</width>
       <height>21</height>
      </rect>
     </property>
@@ -1604,8 +1591,6 @@ QPushButton:pressed {
                          font-family:Trebuchet MS;
                           font-size:15px;
                          font-weight:bold;
-                         text-decoration:none;
-                          text-shadow:0px 1px 0px #2d2e29;
 }</string>
     </property>
     <property name="text">
@@ -1620,7 +1605,7 @@ QPushButton:pressed {
      <rect>
       <x>340</x>
       <y>80</y>
-      <width>101</width>
+      <width>151</width>
       <height>21</height>
      </rect>
     </property>
@@ -1641,8 +1626,6 @@ QPushButton:pressed {
                          font-family:Trebuchet MS;
                           font-size:15px;
                          font-weight:bold;
-                         text-decoration:none;
-                          text-shadow:0px 1px 0px #2d2e29;
 }</string>
     </property>
     <property name="text">
@@ -1657,7 +1640,7 @@ QPushButton:pressed {
      <rect>
       <x>340</x>
       <y>100</y>
-      <width>101</width>
+      <width>151</width>
       <height>21</height>
      </rect>
     </property>
@@ -1678,8 +1661,6 @@ QPushButton:pressed {
                          font-family:Trebuchet MS;
                           font-size:15px;
                          font-weight:bold;
-                         text-decoration:none;
-                          text-shadow:0px 1px 0px #2d2e29;
 }</string>
     </property>
     <property name="text">
@@ -1687,177 +1668,6 @@ QPushButton:pressed {
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="savedresult">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>140</y>
-      <width>101</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Trebuchet MS</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <underline>false</underline>
-      <strikeout>false</strikeout>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
-                          background-color:transparent;
-                          color:#91835a;
-                         font-family:Trebuchet MS;
-                          font-size:15px;
-                         font-weight:bold;
-                         text-decoration:none;
-                          text-shadow:0px 1px 0px #2d2e29;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="indicator">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>220</y>
-      <width>131</width>
-      <height>39</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Trebuchet MS</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox::indicator:checked {
-					 		  border:1px solid #25261f;
- 							  border-radius:5px;
-                              background-color: #d7dae0;
- }
-QCheckBox::indicator:checked:pressed {
-							  border:1px solid #25261f;
- 							  border-radius:5px;
-                              background-color: #505739;
- }
-QCheckBox::indicator:checked:hover {
-							  border:1px solid #25261f;
- 							  border-radius:5px;
-                              background-color: #505739;
- }
-QCheckBox::indicator:unchecked {
-					  		   border:1px solid #25261f;
- 							   border-radius:5px;
-                               background-color: transparent;	
-                               color:#91835a;
- }
-QCheckBox::indicator:unchecked:pressed {
-							  border:1px solid #25261f;
- 							  border-radius:5px;
-                              background-color: #505739;		
- }
-QCheckBox::indicator:unchecked:hover {
-							  border:1px solid #25261f;
- 							  border-radius:5px;
-                              background-color: #505739;				
- }
-QCheckBox {
-							   border-radius:16px;
-                               background-color:#91835a;
-                               spacing: 5px;
-                               color:#25261f;
-                               border:2px solid #333029;
-                               font-family:Trebuchet MS;
-                               font-size:14px;
-                               font-weight:bold;
-                               padding-left: 5px;
-                               padding-right: 5px;
-                               padding-top: 5px;
-                               padding-bottom: 5px;
-
- }
-
-                 </string>
-    </property>
-    <property name="text">
-     <string>Creme Theme</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="degrad">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>180</y>
-      <width>131</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox::indicator:checked {
-					 		  border:0px solid #25261f;
- 							  border-radius:5px;
-                              background-color: transparent;	
- }
-QCheckBox::indicator:checked:pressed {
-							  border:0px solid #25261f;
- 							  border-radius:5px;
-                              background-color: transparent;	
- }
-QCheckBox::indicator:checked:hover {
-							  border:0px solid #25261f;
- 							  border-radius:5px;
-                              background-color: transparent;	
- }
-QCheckBox::indicator:unchecked {
-					  		   border:0px solid #25261f;
- 							   border-radius:5px;
-                               background-color: transparent;	
-                               color:#91835a;
- }
-QCheckBox::indicator:unchecked:pressed {
-							  border:0px solid #25261f;
- 							  border-radius:5px;
-                              background-color: transparent;			
- }
-QCheckBox::indicator:unchecked:hover {
-							  border:0px solid #25261f;
- 							  border-radius:5px;
-                              background-color: transparent;					
- }
-QCheckBox {
-							   border-radius:16px;
-                               background-color:#91835a;
-                               spacing: 18px;
-                               color:#25261f;
-                               border:2px solid #333029;
-                               font-family:Trebuchet MS;
-                               font-size:14px;
-                               font-weight:bold;
-                               padding-left: 5px;
-                               padding-right: 5px;
-                               padding-top: 5px;
-                               padding-bottom: 5px;
-
- }
-
-</string>
-    </property>
-    <property name="text">
-     <string>Degrees</string>
     </property>
    </widget>
    <widget class="QLabel" name="history_4">
@@ -1865,7 +1675,7 @@ QCheckBox {
      <rect>
       <x>340</x>
       <y>120</y>
-      <width>101</width>
+      <width>151</width>
       <height>21</height>
      </rect>
     </property>
@@ -1886,8 +1696,6 @@ QCheckBox {
                          font-family:Trebuchet MS;
                           font-size:15px;
                          font-weight:bold;
-                         text-decoration:none;
-                          text-shadow:0px 1px 0px #2d2e29;
 }</string>
     </property>
     <property name="text">
@@ -1915,7 +1723,6 @@ QCheckBox {
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1944,7 +1751,6 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
 	font-family:Trebuchet MS;
 	font-size:16px;
 	font-weight:bold;
-	text-decoration:none;
 }
 QPushButton:hover {
 	background-color:#a89a6f;
@@ -1953,6 +1759,174 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>⮑</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="degrees">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>220</y>
+      <width>79</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>degrees? or radians?
+which type do you prefer?</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color:#91835a;
+	border-radius:16px;
+	border:2px solid #333029;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed{background-color: #ccc2a6;}</string>
+    </property>
+    <property name="text">
+     <string>degrees</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="theme">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>220</y>
+      <width>79</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>change that theme!</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color:#91835a;
+	border-radius:16px;
+	border:2px solid #333029;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed{background-color: #ccc2a6;}</string>
+    </property>
+    <property name="text">
+     <string>creme</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="history_5">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>140</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+                          background-color:transparent;
+                          color:#91835a;
+                         font-family:Trebuchet MS;
+                          font-size:15px;
+                         font-weight:bold;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="history_6">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>160</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+                          background-color:transparent;
+                          color:#91835a;
+                         font-family:Trebuchet MS;
+                          font-size:15px;
+                         font-weight:bold;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="history_7">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>180</y>
+      <width>151</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Trebuchet MS</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+                          background-color:transparent;
+                          color:#91835a;
+                         font-family:Trebuchet MS;
+                          font-size:15px;
+                         font-weight:bold;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

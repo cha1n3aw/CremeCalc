@@ -22,12 +22,10 @@ private slots:
 
     void buttons();
     void nondefaultop();
-    void on_indicator_stateChanged(int arg1);
-    void on_degrad_stateChanged(int arg1);
-
     void on_undo_clicked();
-
     void on_redo_clicked();
+    void on_degrees_clicked();
+    void on_theme_clicked();
 
 private:
     Ui::MainWindow *ui;
