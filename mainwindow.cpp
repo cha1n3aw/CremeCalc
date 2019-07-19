@@ -110,17 +110,17 @@ void MainWindow::on_indicator_stateChanged(int arg1)
 "text-decoration:none;text-shadow:0px 1px 0px #2d2e29;}";
 
     QString creme_mainbuttons = "QPushButton{background-color:#91835a;border-radius:16px;border:2px solid #333029;"
-"color:#25261f;font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#a89a6f;}";
+"color:#25261f;font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#a89a6f;}"
+"QPushButton:pressed{background-color: #ccc2a6;}";
 
     QString creme_opbuttons = "QPushButton{background-color:#b8ab85;border-radius:18px;border:2px solid #333029;color:#505739;"
 "font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#a89a6f;}"
 "QPushButton:pressed{background-color: #ccc2a6;}";
 
-    QString creme_expression = "QLabel{box-sizing: content-box;border: 2px solid #91835a;border-radius: 18px;"
-"color: #b8ab85;font-family:Trebuchet MS;font-size:18px;font-weight:bold;text-overflow: clip;background: transparent;"
-"padding-left: 10px;transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);}";
+    QString creme_expression = "QLabel{border: 2px solid #91835a;border-radius: 18px;"
+"color: #b8ab85;font-family:Trebuchet MS;font-size:18px;font-weight:bold;background: transparent;padding-left: 10px;}";
 
-    QString creme_degrees = "QCheckBox::indicator:checked{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
+    QString creme_degrees = "QCheckBox::indicator:checked{border:2px solid #333029;border-radius:5px;background-color:transparent;}"
 "QCheckBox::indicator:checked:pressed{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
 "QCheckBox::indicator:checked:hover{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
 "QCheckBox::indicator:unchecked{border:0px solid #25261f;border-radius:5px;background-color:transparent;color:#91835a;}"
@@ -130,7 +130,7 @@ void MainWindow::on_indicator_stateChanged(int arg1)
           "border:2px solid #333029;font-family:Trebuchet MS;font-size:14px;font-weight:bold;"
           "padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;}";
 
-    QString creme_themebutton = "QCheckBox::indicator:checked{border:1px solid #25261f;border-radius:5px;background-color: #d7dae0;}"
+    QString creme_themebutton = "QCheckBox::indicator:checked{border:2px solid #333029;border-radius:5px;background-color: #d7dae0;}"
 "QCheckBox::indicator:checked:pressed{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
 "QCheckBox::indicator:checked:hover{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
 "QCheckBox::indicator:unchecked{border:1px solid #25261f;border-radius:5px;background-color:transparent;color:#91835a;}"
@@ -138,29 +138,68 @@ void MainWindow::on_indicator_stateChanged(int arg1)
 "QCheckBox::indicator:unchecked:hover{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
 "QCheckBox{border-radius:16px;background-color:#91835a;spacing:5px;color:#25261f;border:2px solid #333029;"
 "font-family:Trebuchet MS;font-size:14px;font-weight:bold;padding-left: 5px;padding-right: 5px;padding-top: 5px;padding-bottom: 5px;}";
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     QString lucid_label = "QLabel{background-color:transparent;color:#2e313b;font-family:Trebuchet MS;font-size:16px;"
 "font-weight:bold;text-decoration:none;text-shadow:0px 1px 0px #2d2e29;}";
 
-    QString lucid_expression = "QLabel{box-sizing: content-box;border: 2px solid #1c1e24;border-radius: 18px;"
-"color: #2e313b;font-family:Trebuchet MS;font-size:18px;font-weight:bold;text-overflow: clip;background: transparent;"
-"padding-left: 10px;transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);}";
+    QString lucid_expression = "QLabel{border: 2px solid #a0dadb;border-radius: 18px;"
+"color: #2e313b;font-family:Trebuchet MS;font-size:18px;font-weight:bold;background: transparent;padding-left: 10px;}";
 
-    QString lucid_mainbuttons;
-    QString lucid_opbuttons;
-    QString lucid_degrees;
-    QString lucid_themebutton;
+    QString lucid_mainbuttons = "QPushButton{background-color:#d5e38c;border-radius:16px;border:2px solid #cccccc;"
+"color:#25261f;font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#cbe3c3;}"
+"QPushButton:pressed{background-color: #cccccc;}"; //#d5e38c
+
+    QString lucid_opbuttons = "QPushButton{background-color:#a0dadb;border-radius:18px;border:2px solid #cccccc;color:#505739;"
+"font-family:Trebuchet MS;font-size:16px;font-weight:bold;}QPushButton:hover{background-color:#cbe9eb;}"
+"QPushButton:pressed{background-color: #cccccc;}"; //#a0dadb
+
+    QString lucid_degrees = "QCheckBox::indicator:checked{border:2px solid #cccccc;border-radius:5px;background-color:transparent;}"
+"QCheckBox::indicator:checked:pressed{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
+"QCheckBox::indicator:checked:hover{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
+"QCheckBox::indicator:unchecked{border:0px solid #25261f;border-radius:5px;background-color:transparent;color:#91835a;}"
+"QCheckBox::indicator:unchecked:pressed{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
+"QCheckBox::indicator:unchecked:hover{border:0px solid #25261f;border-radius:5px;background-color:transparent;}"
+"QCheckBox{border-radius:16px;background-color:#d5e38c;spacing: 18px;color:#25261f;"
+          "border:2px solid #cccccc;font-family:Trebuchet MS;font-size:14px;font-weight:bold;"
+          "padding-left:5px;padding-right:5px;padding-top:5px;padding-bottom:5px;}"; //#d5e38c
+
+    QString lucid_themebutton = "QCheckBox::indicator:checked{border:1px solid #cccccc;border-radius:5px;background-color: #d7dae0;}"
+"QCheckBox::indicator:checked:pressed{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
+"QCheckBox::indicator:checked:hover{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
+"QCheckBox::indicator:unchecked{border:1px solid #25261f;border-radius:5px;background-color:transparent;color:#91835a;}"
+"QCheckBox::indicator:unchecked:pressed{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
+"QCheckBox::indicator:unchecked:hover{border:1px solid #25261f;border-radius:5px;background-color: #505739;}"
+"QCheckBox{border-radius:16px;background-color:#d5e38c;spacing:5px;color:#25261f;border:2px solid #cccccc;"
+"font-family:Trebuchet MS;font-size:14px;font-weight:bold;padding-left: 5px;padding-right: 5px;padding-top: 5px;padding-bottom: 5px;}"; //#d5e38c
+
 
     if (arg1 == 2)
     {
-        ui->indicator->setText("Lucid Theme");
         setStyleSheet("background-color:#d7dae0;border:0px solid #d7dae0;");
-        ui->expression->setStyleSheet(lucid_expression);
-        ui->history_1->setStyleSheet(lucid_label);
-        ui->history_2->setStyleSheet(lucid_label);
-        ui->history_3->setStyleSheet(lucid_label);
-        ui->history_4->setStyleSheet(lucid_label);
-        ui->savedresult->setStyleSheet(lucid_label);
+        ui->indicator->setText("Lucid Theme"); ui->expression->setStyleSheet(lucid_expression);
+        ui->history_1->setStyleSheet(lucid_label); ui->history_2->setStyleSheet(lucid_label);
+        ui->history_3->setStyleSheet(lucid_label); ui->history_4->setStyleSheet(lucid_label);
+        ui->savedresult->setStyleSheet(lucid_label); ui->degrad->setStyleSheet(lucid_degrees);
+        ui->btdel->setStyleSheet(lucid_mainbuttons); ui->bttan->setStyleSheet(lucid_mainbuttons);
+        ui->btctan->setStyleSheet(lucid_mainbuttons); ui->btsin->setStyleSheet(lucid_mainbuttons);
+        ui->btcos->setStyleSheet(lucid_mainbuttons); ui->btms->setStyleSheet(lucid_mainbuttons);
+        ui->btmr->setStyleSheet(lucid_mainbuttons); ui->btmc->setStyleSheet(lucid_mainbuttons);
+        ui->btclr->setStyleSheet(lucid_mainbuttons); ui->bteq->setStyleSheet(lucid_mainbuttons);
+        ui->bt0->setStyleSheet(lucid_opbuttons); ui->bt00->setStyleSheet(lucid_opbuttons);
+        ui->bt1->setStyleSheet(lucid_opbuttons); ui->bt2->setStyleSheet(lucid_opbuttons);
+        ui->bt3->setStyleSheet(lucid_opbuttons); ui->bt4->setStyleSheet(lucid_opbuttons);
+        ui->bt5->setStyleSheet(lucid_opbuttons); ui->bt6->setStyleSheet(lucid_opbuttons);
+        ui->bt7->setStyleSheet(lucid_opbuttons); ui->bt8->setStyleSheet(lucid_opbuttons);
+        ui->bt9->setStyleSheet(lucid_opbuttons); ui->btpl->setStyleSheet(lucid_opbuttons);
+        ui->btmin->setStyleSheet(lucid_opbuttons); ui->btmult->setStyleSheet(lucid_opbuttons);
+        ui->btdiv->setStyleSheet(lucid_opbuttons); ui->btpow->setStyleSheet(lucid_opbuttons);
+        ui->btroot->setStyleSheet(lucid_opbuttons); ui->sqroot->setStyleSheet(lucid_opbuttons);
+        ui->btdot->setStyleSheet(lucid_opbuttons); ui->btopen->setStyleSheet(lucid_opbuttons);
+        ui->btclose->setStyleSheet(lucid_opbuttons); ui->bte->setStyleSheet(lucid_opbuttons);
+        ui->btp->setStyleSheet(lucid_opbuttons); ui->btlog->setStyleSheet(lucid_opbuttons);
+        ui->btlg->setStyleSheet(lucid_opbuttons); ui->btln->setStyleSheet(lucid_opbuttons);
+        ui->undo->setStyleSheet(lucid_mainbuttons); ui->redo->setStyleSheet(lucid_mainbuttons);
+        ui->indicator->setStyleSheet(lucid_themebutton);
     }
     else
     {
@@ -187,6 +226,8 @@ void MainWindow::on_indicator_stateChanged(int arg1)
         ui->btclose->setStyleSheet(creme_opbuttons); ui->bte->setStyleSheet(creme_opbuttons);
         ui->btp->setStyleSheet(creme_opbuttons); ui->btlog->setStyleSheet(creme_opbuttons);
         ui->btlg->setStyleSheet(creme_opbuttons); ui->btln->setStyleSheet(creme_opbuttons);
+        ui->undo->setStyleSheet(creme_mainbuttons); ui->redo->setStyleSheet(creme_mainbuttons);
+        ui->indicator->setStyleSheet(creme_themebutton);
     }
 }
 
@@ -758,7 +799,6 @@ void MainWindow::stringremover()
             buffer = texttemp;
         }
     }
-    qDebug() << "buffer after = " << buffer;
     for (int i = 0; i < buffer.length(); i++)
     {
         if (buffer[i] == ' ')
@@ -771,7 +811,6 @@ void MainWindow::stringremover()
             i--;
         }
     }
-    qDebug() << "after space remover " << buffer;
     for (int i = 0; i < buffer.length() ; i++)
     {
         if (buffer[i] == '(' && (buffer[i + 1] == '-' || buffer[i + 1] == '+'))
@@ -784,7 +823,6 @@ void MainWindow::stringremover()
                 buffer[i + 1] = '0';
         }
     }
-    qDebug() << "after after (0-) " << buffer;
     if (buffer[0] == '-' || buffer[0] == '+')
     {
         buffer.resize(buffer.length() + 1);
@@ -794,7 +832,6 @@ void MainWindow::stringremover()
         }
         buffer[0] = '0';
     }
-    qDebug() << "after first 0 " << buffer;
 }
 
 double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int opstacksize)
@@ -1313,6 +1350,5 @@ void string_parsing(string expression)
             else break;
         }
         result = calculation(digitbuffer, opbuffer, digitstacksize, opstacksize);
-        qDebug() << "result =" << result;
         return(result);
     }

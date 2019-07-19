@@ -490,11 +490,7 @@ QPushButton:pressed {
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>=</string>
@@ -920,11 +916,7 @@ QPushButton:pressed {
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>C</string>
@@ -963,11 +955,7 @@ QPushButton:pressed
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>sin</string>
@@ -1006,11 +994,7 @@ QPushButton:pressed
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>cos</string>
@@ -1049,11 +1033,7 @@ QPushButton:pressed
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>tg</string>
@@ -1264,11 +1244,7 @@ QPushButton:pressed {
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>ctg</string>
@@ -1307,11 +1283,7 @@ QPushButton:pressed
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>MS</string>
@@ -1350,11 +1322,7 @@ QPushButton:pressed
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>MR</string>
@@ -1393,11 +1361,7 @@ QPushButton:pressed
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>MC</string>
@@ -1479,11 +1443,7 @@ padding-left: 10px;
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>⌫</string>
@@ -1960,11 +1920,7 @@ QCheckBox {
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>⮐</string>
@@ -1993,11 +1949,7 @@ QPushButton:pressed
 QPushButton:hover {
 	background-color:#a89a6f;
 }
-QPushButton:pressed
-{
-	position:relative;
-	top:1px;
-}</string>
+QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="text">
      <string>⮑</string>
