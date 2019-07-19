@@ -15,15 +15,15 @@ using namespace std;
 
 double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int opstacksize); //прототип функции для вычисления
 double brackets(double* digitbuffer, char* opbuffer, int digitstacksize, int opstacksize); //прототип функции для выделения выражения внутри скобок
-static QStack <double> digitstack; //стек чисел
-static QStack <char> opstack; //стек операторов
+double stacktobuffer(); //прототип функции вычислений
 void firewall(string expression);
 void stringremover(); //прототип функции чистки строки от пробелов
 void string_parsing(string); //прототип функции парсинга стринга
-double stacktobuffer(); //прототип функции вычислений
 void buttons();
 void write(QString expression);
 void errorwindow();
+static QStack <double> digitstack; //стек чисел
+static QStack <char> opstack; //стек операторов
 static QString buffer;
 static bool powstatus = false;
 static bool error = false;
@@ -31,6 +31,7 @@ static bool bracketstatus = false;
 static bool radians;
 static vector <string> history;
 static vector <string> texthistory;
+static unsigned long long undostep = 0;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -80,6 +81,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btms, SIGNAL(clicked()), this, SLOT(nondefaultop()));
     connect(ui->btmr, SIGNAL(clicked()), this, SLOT(nondefaultop()));
     connect(ui->btmc, SIGNAL(clicked()), this, SLOT(nondefaultop()));
+    history.push_back("");
+    texthistory.push_back("");
 }
 
 MainWindow::~MainWindow()
@@ -244,12 +247,9 @@ void MainWindow::result ()
     QString result;
     if (buffer.length() != 0)
     {
-        qDebug() << buffer;
         stringremover();
-        qDebug() << buffer;
         string expression = buffer.toLocal8Bit().constData();
         firewall(expression);
-        qDebug() << buffer;
         if (!error)
         {
                 string_parsing(expression);
@@ -263,11 +263,16 @@ void MainWindow::result ()
                         else result.resize(i);
                        i--;
                     }
+                    buffer = buffer + "=" + result;
+                    ui->expression->setText(ui->expression->text() + "=" + result);
+                    if (undostep != history.size() - 1)
+                    {
+                        history.resize(history.size() - (history.size() - undostep - 1));
+                        texthistory.resize(texthistory.size() - (texthistory.size() - undostep - 1));
+                    }
                     history.push_back(buffer.toLocal8Bit().constData());
                     texthistory.push_back(ui->expression->text().toLocal8Bit().constData());
-                    buffer = buffer + "=" + result;
-                    qDebug() << "history = " << QString::fromStdString(history[history.size() - 1]);
-                    ui->expression->setText(ui->expression->text() + "=" + result);
+                    undostep++;
                     ui->history_4->setText(ui->history_3->text());
                     ui->history_3->setText(ui->history_2->text());
                     ui->history_2->setText(ui->history_1->text());
@@ -281,18 +286,21 @@ void MainWindow::result ()
 
 void MainWindow::on_undo_clicked()
 {
-    if (history.size() > 1 && texthistory.size() > 1)
+    if (undostep > 0 && history.size() > 0)
     {
-        buffer = QString::fromStdString(history[history.size() - 1]);
-        history.resize(history.size() - 1);
-        ui->expression->setText(QString::fromStdString(texthistory[texthistory.size() - 1]));
-        texthistory.resize(history.size() - 1);
+        undostep--;
+        buffer = QString::fromStdString(history[undostep]);
+        ui->expression->setText(QString::fromStdString(texthistory[undostep]));
     }
-    else
+}
+
+void MainWindow::on_redo_clicked()
+{
+    if (history.size() > undostep + 1)
     {
-        buffer = "";
-        ui->expression->setText("");
-        powstatus = false;
+        undostep++;
+        buffer = QString::fromStdString(history[undostep]);
+        ui->expression->setText(QString::fromStdString(texthistory[undostep]));
     }
 }
 
@@ -473,7 +481,6 @@ void MainWindow::write(QString action)
                         {
                             if (text.length() > 0 && text[(text.length() - 1)] != '>')
                             {
-                                qDebug() << "low cut triggered";
                                 if (buffer[buffer.length() - 1] == '^') buffer.resize(buffer.length() - 1);
                                 else
                                 {
@@ -487,7 +494,6 @@ void MainWindow::write(QString action)
                             {
                                 if (text.length() > 0)
                                 {
-                                    qDebug() << "high cut triggered";
                                     buffer.resize(buffer.length() - 1);
                                     text.resize(text.length() - 12);
                                     ui->expression->setText(text);
@@ -505,6 +511,9 @@ void MainWindow::write(QString action)
             {
                 buffer = "";
                 ui->expression->setText("");
+                history.push_back("");
+                texthistory.push_back("");
+                undostep++;
                 powstatus = false;
             }
             else
@@ -561,8 +570,6 @@ void MainWindow::write(QString action)
     }
     QString text;
     text = ui->expression->text();
-    qDebug() << "buffer =" << buffer;
-    qDebug() << "text =" << text;
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *pressedkey)
@@ -573,62 +580,69 @@ void MainWindow::keyPressEvent(QKeyEvent *pressedkey)
     }
     else
     {
-        switch (pressedkey->key())
+        if ((pressedkey->modifiers()==Qt::ControlModifier) && (pressedkey->key()==Qt::Key_Y))
         {
-        case Qt::Key_1: write("1");
-            break;
-        case Qt::Key_2: write("2");
-            break;
-        case Qt::Key_3: write("3");
-            break;
-        case Qt::Key_4: write("4");
-            break;
-        case Qt::Key_5: write("5");
-            break;
-        case Qt::Key_6: write("6");
-            break;
-        case Qt::Key_7: write("7");
-            break;
-        case Qt::Key_8: write("8");
-            break;
-        case Qt::Key_9: write("9");
-            break;
-        case Qt::Key_0: write("0");
-            break;
-        case Qt::Key_Minus: powstatus = false; write("-");
-            break;
-        case Qt::Key_Plus: powstatus = false; write("+");
-            break;
-        case Qt::Key_Slash: powstatus = false; write("/");
-            break;
-        case Qt::Key_Asterisk: powstatus = false; write("×");
-            break;
-        case Qt::Key_Equal: result();
-            break;
-        case Qt::Key_Backspace: write("⌫");
-            break;
-        case Qt::Key_S: write("sin");
-            break;
-        case Qt::Key_C: write("cos");
-            break;
-        case Qt::Key_T: write("tan");
-            break;
-        case Qt::Key_E: write("exp");
-            break;
-        case Qt::Key_P: write("pi");
-            break;
-        case Qt::Key_Period: write(".");
-            break;
-        case Qt::Key_AsciiCircum: write("^");
-            break;
-        case Qt::Key_BracketLeft: write("(");
-            break;
-        case Qt::Key_BracketRight: write(")");
-            break;
-        case Qt::Key_Return: result();
-            break;
-        case Qt::Key_Delete: write("C");
-            break;
+            on_redo_clicked();
+        }
+        else
+        {
+            switch (pressedkey->key())
+            {
+            case Qt::Key_1: write("1");
+                break;
+            case Qt::Key_2: write("2");
+                break;
+            case Qt::Key_3: write("3");
+                break;
+            case Qt::Key_4: write("4");
+                break;
+            case Qt::Key_5: write("5");
+                break;
+            case Qt::Key_6: write("6");
+                break;
+            case Qt::Key_7: write("7");
+                break;
+            case Qt::Key_8: write("8");
+                break;
+            case Qt::Key_9: write("9");
+                break;
+            case Qt::Key_0: write("0");
+                break;
+            case Qt::Key_Minus: powstatus = false; write("-");
+                break;
+            case Qt::Key_Plus: powstatus = false; write("+");
+                break;
+            case Qt::Key_Slash: powstatus = false; write("/");
+                break;
+            case Qt::Key_Asterisk: powstatus = false; write("×");
+                break;
+            case Qt::Key_Equal: result();
+                break;
+            case Qt::Key_Backspace: write("⌫");
+                break;
+            case Qt::Key_S: write("sin");
+                break;
+            case Qt::Key_C: write("cos");
+                break;
+            case Qt::Key_T: write("tan");
+                break;
+            case Qt::Key_E: write("exp");
+                break;
+            case Qt::Key_P: write("pi");
+                break;
+            case Qt::Key_Period: write(".");
+                break;
+            case Qt::Key_AsciiCircum: write("^");
+                break;
+            case Qt::Key_BracketLeft: write("(");
+                break;
+            case Qt::Key_BracketRight: write(")");
+                break;
+            case Qt::Key_Return: result();
+                break;
+            case Qt::Key_Delete: write("C");
+                break;
+            }
         }
     }
 }

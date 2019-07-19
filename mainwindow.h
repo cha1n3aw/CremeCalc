@@ -27,6 +27,8 @@ private slots:
 
     void on_undo_clicked();
 
+    void on_redo_clicked();
+
 private:
     Ui::MainWindow *ui;
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
