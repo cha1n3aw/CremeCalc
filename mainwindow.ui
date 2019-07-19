@@ -1582,9 +1582,9 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>70</y>
+      <y>60</y>
       <width>101</width>
-      <height>16</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -1619,9 +1619,9 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>90</y>
+      <y>80</y>
       <width>101</width>
-      <height>16</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -1656,9 +1656,9 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>110</y>
+      <y>100</y>
       <width>101</width>
-      <height>16</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -1693,9 +1693,9 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>150</y>
+      <y>140</y>
       <width>101</width>
-      <height>16</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -1864,9 +1864,9 @@ QCheckBox {
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>130</y>
+      <y>120</y>
       <width>101</width>
-      <height>16</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">

@@ -370,7 +370,7 @@ void MainWindow::write(QString action)
         case '=': result(); break;
         case 'r':
         {
-            if (buffer.length() > 0 && buffer[buffer.length() - 1] != 'r')
+            if (buffer.length() > 0 && buffer[buffer.length() - 1] != 'r' && buffer[buffer.length() - 1] != '^' && buffer[buffer.length() - 1] != 'g')
             {
                 QString text;
                 QString temp = ui->expression->text();
@@ -392,7 +392,8 @@ void MainWindow::write(QString action)
                            && buffer[i] != '-'
                            && buffer[i] != '*'
                            && buffer[i] != '/'
-                           && buffer[i] != '^')
+                           && buffer[i] != '^'
+                           && buffer[i] != '=')
                         {
                             text += buffer[i];
                             temp.resize(temp.length() - 1);
@@ -413,24 +414,37 @@ void MainWindow::write(QString action)
         }
         case 'g':
         {
-            if (buffer.length() > 0)
+            if (buffer.length() > 0 && buffer[buffer.length() - 1] != 'r' && buffer[buffer.length() - 1] != '^' && buffer[buffer.length() - 1] != 'g')
             {
                 QString text;
                 QString temp = ui->expression->text();
                 int i = buffer.length() - 1;
                 QString text1;
-                while (i >= 0
-                       && buffer[i] != '+'
-                       && buffer[i] != '-'
-                       && buffer[i] != '*'
-                       && buffer[i] != '/'
-                       && buffer[i] != '^'
-                       && buffer[i] != 'r')
-                    {
-                        text += buffer[i];
-                        temp.resize(temp.length() - 1);
-                        i--;
-                    }
+                if(buffer[i] == ')')
+                {
+                    while (i >= 0 && buffer[i + 1] != '(')
+                        {
+                            text += buffer[i];
+                            temp.resize(temp.length() - 1);
+                            i--;
+                        }
+                }
+                else
+                {
+                    while (i >= 0
+                           && buffer[i] != '+'
+                           && buffer[i] != '-'
+                           && buffer[i] != '*'
+                           && buffer[i] != '/'
+                           && buffer[i] != '^'
+                           && buffer[i] != '='
+                           && buffer[i] != '(')
+                        {
+                            text += buffer[i];
+                            temp.resize(temp.length() - 1);
+                            i--;
+                        }
+                }
                 text1.resize(text.length());
                 for (i = 0; i < text.length(); i++)
                 {
@@ -575,7 +589,7 @@ void MainWindow::write(QString action)
                     buffer += action;
                     ui->expression->setText(ui->expression->text() + "<sup>" + action + "</sup>");
                 }
-                else if (buffer.length() > 0 && buffer[buffer.length() - 1] != '^') buffer += action;
+                else if (buffer.length() > 0 && buffer[buffer.length() - 1] != '^' && buffer[buffer.length() - 1] != 'r' && buffer[buffer.length() - 1] != 'g') buffer += action;
             }
             else
             {
@@ -842,6 +856,230 @@ void MainWindow::stringremover()
     }
 }
 
+void string_parsing(string expression)
+{
+    unsigned long long i = 0; //переменная для счетчика
+    double number = 0; //число которое записывается в стек
+    double fraction = 1; //счетчик десятичной дроби в числе
+    for (i = 0; i < expression.length(); i++)
+    {
+        if ((expression[i] == 'e' || expression[i] == 'E') && (expression[i+1] == 'x' || expression[i+1] == 'X') && (expression[i+2] == 'p' || expression[i+2] == 'P'))
+        {
+            digitstack.push(exp(1));
+            i+=2;
+            continue;
+        }
+        if ((expression[i] == 'p' || expression[i] == 'P') && (expression[i+1] == 'i' || expression[i+1] == 'I'))
+        {
+            digitstack.push(atan(1.0) * 4);
+            i++;
+            continue;
+        }
+        if ((expression[i] == 'l' || expression[i] == 'L') && (expression[i+1] == 'o' || expression[i+1] == 'O') && (expression[i+2] == 'g' || expression[i+2] == 'G'))
+        {
+            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 's' && expression[i+3] != 'c' && expression[i+3] != 't')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                if (!isdigit(expression[i-1]) && expression[i-1] != ')')
+                {
+                    error = true;
+                    break;
+                }
+                else
+                {
+                    opstack.push('l');
+                    fraction = 1;
+                    i+=2;
+                    continue;
+                }
+            }
+        }
+        if ((expression[i] == 'l' || expression[i] == 'L') && (expression[i+1] == 'g' || expression[i+1] == 'G'))
+        {
+            if (!isdigit(expression[i+2]) && expression[i+2] != 'e' && expression[i+2] != 'p' && expression[i+2] != '(' && expression[i+2] != 's' && expression[i+2] != 'c' && expression[i+2] != 't')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('g');
+                fraction = 1;
+                i++;
+                continue;
+            }
+        }
+        if ((expression[i] == 'l' || expression[i] == 'L') && (expression[i+1] == 'n' || expression[i+1] == 'N'))
+        {
+            if (!isdigit(expression[i+2]) && expression[i+2] != 'e' && expression[i+2] != 'p' && expression[i+2] != '(' && expression[i+2] != 's' && expression[i+2] != 'c' && expression[i+2] != 't')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('n');
+                fraction = 1;
+                i++;
+                continue;
+            }
+        }
+        if ((expression[i] == 's' || expression[i] == 'S') && (expression[i+1] == 'i' || expression[i+1] == 'I') && (expression[i+2] == 'n' || expression[i+2] == 'N'))
+        {
+            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 'l')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('s');
+                fraction = 1;
+                i+=2;
+                continue;
+            }
+        }
+        if ((expression[i] == 'c' || expression[i] == 'C') && (expression[i+1] == 'o' || expression[i+1] == 'O') && (expression[i+2] == 's' || expression[i+2] == 'S'))
+        {
+            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 'l')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('c');
+                fraction = 1;
+                i+=2;
+                continue;
+            }
+        }
+        if ((expression[i] == 't' || expression[i] == 'T') && (expression[i+1] == 'g' || expression[i+1] == 'G'))
+        {
+            if (!isdigit(expression[i+2]) && expression[i+2] != 'e' && expression[i+2] != 'p' && expression[i+2] != '(' && expression[i+2] != 'l')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('t');
+                fraction = 1;
+                i++;
+                continue;
+            }
+        }
+        if ((expression[i] == 'c' || expression[i] == 'C') && (expression[i+1] == 't' || expression[i+1] == 'T') && (expression[i+2] == 'g' || expression[i+2] == 'G'))
+        {
+            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 'l')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push('k');
+                fraction = 1;
+                i+=2;
+                continue;
+            }
+        }
+        if (expression[i] == 'r')
+        {
+            if (!isdigit(expression[i-1]) && expression[i-1] != ')')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                if (!isdigit(expression[i+1]) && expression[i+1] != 'e' && expression[i+1] != 'p' && expression[i+1] != '(')
+                {
+                    error = true;
+                    break;
+                }
+                else
+                {
+                    opstack.push('r');
+                    fraction = 1;
+                    continue;
+                }
+            }
+        }
+        if (expression[i] == '(')
+        {
+            if (expression[i+1] == ')')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push(expression[i]);
+                fraction = 1;
+                continue;
+            }
+        }
+        if (expression[i] == ')')
+        {
+            if (expression[i+1] == '(')
+            {
+                error = true;
+                break;
+            }
+            else
+            {
+                digitstack.push(0);
+                opstack.push(expression[i]);
+                fraction = 1;
+                continue;
+            }
+        }
+        if (expression[i] != '.' && !isalpha(expression[i]) && !isdigit(expression[i]))
+        {
+            opstack.push(expression[i]);
+            fraction = 1;
+            continue;
+        }
+
+        if (isdigit(expression[i]))
+        {
+            //если показатель десятичной части числа равен единице то мы проводим обычное добавление к числу
+            if (fraction == 1.0) number = (number * 10) + (expression[i] - '0');
+            //если показатель десятичной части числа не равен дефолтной единице
+            //то мы делим на показатель и добавляем к числу
+            if (fraction != 1.0)
+            {
+                number = number + ((expression[i] - '0') / fraction);
+                fraction *= 10; //и увеличиваем показатель для следующего деления
+            }
+        }
+        if (expression[i] == '.')
+        {
+            fraction *= 10;
+        }
+
+        if (expression[i + 1] == '.') continue;
+
+        if (!isdigit(expression[i + 1]))
+        {
+            digitstack.push(number);
+            number = 0;
+        }
+    }
+}
+
 double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int opstacksize)
 {
     int i, c;
@@ -1057,306 +1295,83 @@ double calculation(double* digitbuffer, char* opbuffer, int digitstacksize, int 
     return (digitbuffer[0]);
 }
 
-void string_parsing(string expression)
+double stacktobuffer()
 {
-    unsigned long long i = 0; //переменная для счетчика
-    double number = 0; //число которое записывается в стек
-    double fraction = 1; //счетчик десятичной дроби в числе
-    for (i = 0; i < expression.length(); i++)
+    double result = 0;
+    int i = 0;
+    int digitstacksize = digitstack.size();
+    int opstacksize = opstack.size();
+    double* digitbuffer = new double[digitstacksize];
+    char* opbuffer = new char[opstacksize];
+
+    for (i = digitstacksize - 1; i >= 0; i--)
     {
-        if ((expression[i] == 'e' || expression[i] == 'E') && (expression[i+1] == 'x' || expression[i+1] == 'X') && (expression[i+2] == 'p' || expression[i+2] == 'P'))
-        {
-            digitstack.push(exp(1));
-            i+=2;
-            continue;
-        }
-        if ((expression[i] == 'p' || expression[i] == 'P') && (expression[i+1] == 'i' || expression[i+1] == 'I'))
-        {
-            digitstack.push(atan(1.0) * 4);
-            i++;
-            continue;
-        }
-        if ((expression[i] == 'l' || expression[i] == 'L') && (expression[i+1] == 'o' || expression[i+1] == 'O') && (expression[i+2] == 'g' || expression[i+2] == 'G'))
-        {
-            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 's' && expression[i+3] != 'c' && expression[i+3] != 't')
-            {
-                error = true;
-                break;
-            }
-            else
-            {
-                if (!isdigit(expression[i-1]) && expression[i+3] != ')')
-                {
-                    error = true;
-                    break;
-                }
-                else
-                {
-                    opstack.push('l');
-                    fraction = 1;
-                    i+=2;
-                    continue;
-                }
-            }
-        }
-        if ((expression[i] == 'l' || expression[i] == 'L') && (expression[i+1] == 'g' || expression[i+1] == 'G'))
-        {
-            if (!isdigit(expression[i+2]) && expression[i+2] != 'e' && expression[i+2] != 'p' && expression[i+2] != '(' && expression[i+2] != 's' && expression[i+2] != 'c' && expression[i+2] != 't')
-            {
-                error = true;
-                break;
-            }
-            else
-            {
-                digitstack.push(0);
-                opstack.push('g');
-                fraction = 1;
-                i++;
-                continue;
-            }
-        }
-        if ((expression[i] == 'l' || expression[i] == 'L') && (expression[i+1] == 'n' || expression[i+1] == 'N'))
-        {
-            if (!isdigit(expression[i+2]) && expression[i+2] != 'e' && expression[i+2] != 'p' && expression[i+2] != '(' && expression[i+2] != 's' && expression[i+2] != 'c' && expression[i+2] != 't')
-            {
-                error = true;
-                break;
-            }
-            else
-            {
-                digitstack.push(0);
-                opstack.push('n');
-                fraction = 1;
-                i++;
-                continue;
-            }
-        }
-        if ((expression[i] == 's' || expression[i] == 'S') && (expression[i+1] == 'i' || expression[i+1] == 'I') && (expression[i+2] == 'n' || expression[i+2] == 'N'))
-        {
-            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 'l')
-            {
-                error = true;
-                break;
-            }
-            else
-            {
-                digitstack.push(0);
-                opstack.push('s');
-                fraction = 1;
-                i+=2;
-                continue;
-            }
-        }
-        if ((expression[i] == 'c' || expression[i] == 'C') && (expression[i+1] == 'o' || expression[i+1] == 'O') && (expression[i+2] == 's' || expression[i+2] == 'S'))
-        {
-            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 'l')
-            {
-                error = true;
-                break;
-            }
-            else
-            {
-                digitstack.push(0);
-                opstack.push('c');
-                fraction = 1;
-                i+=2;
-                continue;
-            }
-        }
-        if ((expression[i] == 't' || expression[i] == 'T') && (expression[i+1] == 'g' || expression[i+1] == 'G'))
-        {
-            if (!isdigit(expression[i+2]) && expression[i+2] != 'e' && expression[i+2] != 'p' && expression[i+2] != '(' && expression[i+2] != 'l')
-            {
-                error = true;
-                break;
-            }
-            else
-            {
-                digitstack.push(0);
-                opstack.push('t');
-                fraction = 1;
-                i++;
-                continue;
-            }
-        }
-        if ((expression[i] == 'c' || expression[i] == 'C') && (expression[i+1] == 't' || expression[i+1] == 'T') && (expression[i+2] == 'g' || expression[i+2] == 'G'))
-        {
-            if (!isdigit(expression[i+3]) && expression[i+3] != 'e' && expression[i+3] != 'p' && expression[i+3] != '(' && expression[i+3] != 'l')
-            {
-                error = true;
-                break;
-            }
-            else
-            {
-                digitstack.push(0);
-                opstack.push('k');
-                fraction = 1;
-                i+=2;
-                continue;
-            }
-        }
-        if (expression[i] == 'r')
-        {
-            if (!isdigit(expression[i-1]) && expression[i-1] != ')')
-            {
-                error = true;
-                break;
-            }
-            else
-            {
-                if (!isdigit(expression[i+1]) && expression[i+1] != 'e' && expression[i+1] != 'p' && expression[i+1] != '(')
-                {
-                    error = true;
-                    break;
-                }
-                else
-                {
-                    opstack.push('r');
-                    fraction = 1;
-                    continue;
-                }
-            }
-        }
-        if (expression[i] == '(')
-        {
-            if (expression[i+1] == ')')
-            {
-                error = true;
-                break;
-            }
-            else
-            {
-                digitstack.push(0);
-                opstack.push(expression[i]);
-                fraction = 1;
-                continue;
-            }
-        }
-        if (expression[i] == ')')
-        {
-            if (expression[i+1] == '(')
-            {
-                error = true;
-                break;
-            }
-            else
-            {
-                digitstack.push(0);
-                opstack.push(expression[i]);
-                fraction = 1;
-                continue;
-            }
-        }
-        if (expression[i] != '.' && !isalpha(expression[i]) && !isdigit(expression[i]))
-        {
-            opstack.push(expression[i]);
-            fraction = 1;
-            continue;
-        }
-
-        if (isdigit(expression[i]))
-        {
-            //если показатель десятичной части числа равен единице то мы проводим обычное добавление к числу
-            if (fraction == 1.0) number = (number * 10) + (expression[i] - '0');
-            //если показатель десятичной части числа не равен дефолтной единице
-            //то мы делим на показатель и добавляем к числу
-            if (fraction != 1.0)
-            {
-                number = number + ((expression[i] - '0') / fraction);
-                fraction *= 10; //и увеличиваем показатель для следующего деления
-            }
-        }
-        if (expression[i] == '.')
-        {
-            fraction *= 10;
-        }
-
-        if (expression[i + 1] == '.') continue;
-
-        if (!isdigit(expression[i + 1]))
-        {
-            digitstack.push(number);
-            number = 0;
-        }
+        digitbuffer[i] = digitstack.top();
+        digitstack.pop();
     }
-}
-    double stacktobuffer()
+
+    for (i = opstacksize - 1; i >= 0; i--)
     {
-        double result = 0;
+        opbuffer[i] = opstack.top();
+        opstack.pop();
+    }
+
+    for (int a = 0; a < opstacksize; a++)
+    {
+        bool brackets = false;
         int i = 0;
-        int digitstacksize = digitstack.size();
-        int opstacksize = opstack.size();
-        double* digitbuffer = new double[digitstacksize];
-        char* opbuffer = new char[opstacksize];
-
-        for (i = digitstacksize - 1; i >= 0; i--)
+        int c = 0;
+        int opening = 0;
+        int closing = 0;
+        int optempsize = 0;
+        double* digittemp = new double[digitstacksize];
+        char* optemp = new char[opstacksize];
+        for (i = opstacksize-1; i >= 0; i--)
         {
-            digitbuffer[i] = digitstack.top();
-            digitstack.pop();
-        }
-
-        for (i = opstacksize - 1; i >= 0; i--)
-        {
-            opbuffer[i] = opstack.top();
-            opstack.pop();
-        }
-
-        for (int a = 0; a < opstacksize; a++)
-        {
-            bool brackets = false;
-            int i = 0;
-            int c = 0;
-            int opening = 0;
-            int closing = 0;
-            int optempsize = 0;
-            double* digittemp = new double[digitstacksize];
-            char* optemp = new char[opstacksize];
-            for (i = opstacksize-1; i >= 0; i--)
+            if (opbuffer[i] == '(')
             {
-                if (opbuffer[i] == '(')
+                for (c = i; c < opstacksize; c++)
                 {
-                    for (c = i; c < opstacksize; c++)
+                    if (opbuffer[c] == ')')
                     {
-                        if (opbuffer[c] == ')')
-                        {
-                            closing = c;
-                            brackets = true;
-                            break;
-                        }
+                        closing = c;
+                        brackets = true;
+                        break;
                     }
-                    opening = i + 1;
-                    break;
                 }
+                opening = i + 1;
+                break;
             }
-            optempsize = closing - opening;
-            c = 0;
-            for (i = opening; i <= closing; i++) // <= потому что чисел всегда на 1 больше
-            {
-                digittemp[c] = digitbuffer[i];
-                c++;
-            }
-            c = 0;
-            for (i = opening; i < closing; i++)
-            {
-                optemp[c] = opbuffer[i];
-                c++;
-            }
-            if (brackets == true)
-            {
-                digitbuffer[opening - 1] = calculation(digittemp, optemp, optempsize + 1, optempsize);
-
-                for (i = opening; i < opstacksize - optempsize; i++)
-                {
-                    digitbuffer[i] = digitbuffer[i + optempsize + 2];
-                }
-
-                for (i = opening - 1; i < opstacksize - optempsize; i++)
-                {
-                    opbuffer[i] = opbuffer[i + optempsize + 2];
-                }
-            }
-            else break;
         }
-        result = calculation(digitbuffer, opbuffer, digitstacksize, opstacksize);
-        return(result);
+        optempsize = closing - opening;
+        c = 0;
+        for (i = opening; i <= closing; i++) // <= потому что чисел всегда на 1 больше
+        {
+            digittemp[c] = digitbuffer[i];
+            c++;
+        }
+        c = 0;
+        for (i = opening; i < closing; i++)
+        {
+            optemp[c] = opbuffer[i];
+            c++;
+        }
+        if (brackets == true)
+        {
+            digitbuffer[opening - 1] = calculation(digittemp, optemp, optempsize + 1, optempsize);
+
+            for (i = opening; i < opstacksize - optempsize; i++)
+            {
+                digitbuffer[i] = digitbuffer[i + optempsize + 2];
+            }
+
+            for (i = opening - 1; i < opstacksize - optempsize; i++)
+            {
+                opbuffer[i] = opbuffer[i + optempsize + 2];
+            }
+        }
+        else break;
     }
+    result = calculation(digitbuffer, opbuffer, digitstacksize, opstacksize);
+    return(result);
+}
