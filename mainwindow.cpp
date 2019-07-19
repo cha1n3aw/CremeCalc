@@ -40,11 +40,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
     setWindowTitle("CremeCalc");
-    ui->savedresult->setWordWrap(true);
-    ui->history_1->setWordWrap(true);
-    ui->history_2->setWordWrap(true);
-    ui->history_3->setWordWrap(true);
-    ui->history_4->setWordWrap(true);
+    ui->expression->setToolTip("This is your expression");
+    ui->savedresult->setToolTip("The result you've saved via MS button");
+
     connect(ui->bt0, SIGNAL(clicked()), this, SLOT(buttons()));
     connect(ui->bt1, SIGNAL(clicked()), this, SLOT(buttons()));
     connect(ui->bt2, SIGNAL(clicked()), this, SLOT(buttons()));
@@ -88,20 +86,6 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::on_degrad_stateChanged(int arg1)
-{
-    if (arg1 == 2)
-    {
-        ui->degrad->setText("Radians");
-        radians = true;
-    }
-    else
-    {
-        ui->degrad->setText("Degrees");
-        radians = false;
-    }
 }
 
 void MainWindow::on_indicator_stateChanged(int arg1)
@@ -325,6 +309,25 @@ void MainWindow::result ()
     }
 }
 
+void MainWindow::on_degrad_stateChanged(int arg1)
+{
+    if (arg1 == 2)
+    {
+        ui->degrad->setText("Radians");
+        radians = true;
+    }
+    else
+    {
+        ui->degrad->setText("Degrees");
+        radians = false;
+    }
+}
+
+//void QToolTip::showText()
+//{
+
+//}
+
 void MainWindow::on_undo_clicked()
 {
     if (undostep > 0 && history.size() > 0)
@@ -349,89 +352,97 @@ void MainWindow::write(QString action)
 {
     switch (action.toLocal8Bit().constData()[0])
     {
-        case '-': powstatus = false;
+        case '-': powstatus = false; break;
+        case '+': powstatus = false; break;
+        case '/': powstatus = false; break;
+        case '*': powstatus = false; break;
+        case 'C':
+        {
+            buffer = "";
+            ui->expression->setText("");
+            history.push_back("");
+            texthistory.push_back("");
+            undostep++;
+            powstatus = false;
             break;
-        case '+': powstatus = false;
-            break;
-        case '/': powstatus = false;
-            break;
-        case '*': powstatus = false;
-            break;
-        case 'C': powstatus = false;
-            break;
-        case '^': powstatus = true;
-            break;
-        case '=': result();
-            break;
+        }
+        case '^': if (buffer.length() > 0) powstatus = true; break;
+        case '=': result(); break;
         case 'r':
         {
-            QString text;
-            QString temp = ui->expression->text();
-            int i = buffer.length() - 1;
-            QString text1;
-            if(buffer[i] == ')')
+            if (buffer.length() > 0 && buffer[buffer.length() - 1] != 'r')
             {
-                while (i >= 0 && buffer[i + 1] != '(')
-                    {
-                        text += buffer[i];
-                        temp.resize(temp.length() - 1);
-                        i--;
-                    }
+                QString text;
+                QString temp = ui->expression->text();
+                int i = buffer.length() - 1;
+                QString text1;
+                if(buffer[i] == ')')
+                {
+                    while (i >= 0 && buffer[i + 1] != '(')
+                        {
+                            text += buffer[i];
+                            temp.resize(temp.length() - 1);
+                            i--;
+                        }
+                }
+                else
+                {
+                    while (i >= 0
+                           && buffer[i] != '+'
+                           && buffer[i] != '-'
+                           && buffer[i] != '*'
+                           && buffer[i] != '/'
+                           && buffer[i] != '^')
+                        {
+                            text += buffer[i];
+                            temp.resize(temp.length() - 1);
+                            i--;
+                        }
+                }
+                text1.resize(text.length());
+                for (i = 0; i < text.length(); i++)
+                {
+                    text1[text1.length() - 1 - i] = text[i];
+                }
+                ui->expression->setText(temp + "<sup>" + text1 + "</sup>");
+                buffer = buffer + "r";
+                ui->expression->setText(ui->expression->text() + "√");
+                break;
             }
-            else
+            else break;
+        }
+        case 'g':
+        {
+            if (buffer.length() > 0)
             {
+                QString text;
+                QString temp = ui->expression->text();
+                int i = buffer.length() - 1;
+                QString text1;
                 while (i >= 0
                        && buffer[i] != '+'
                        && buffer[i] != '-'
                        && buffer[i] != '*'
                        && buffer[i] != '/'
-                       && buffer[i] != '^')
+                       && buffer[i] != '^'
+                       && buffer[i] != 'r')
                     {
                         text += buffer[i];
                         temp.resize(temp.length() - 1);
                         i--;
                     }
-            }
-            text1.resize(text.length());
-            for (i = 0; i < text.length(); i++)
-            {
-                text1[text1.length() - 1 - i] = text[i];
-            }
-            ui->expression->setText(temp + "<sup>" + text1 + "</sup>");
-            buffer = buffer + "r";
-            ui->expression->setText(ui->expression->text() + "√");
-            break;
-        }
-        case 'g':
-        {
-            QString text;
-            QString temp = ui->expression->text();
-            int i = buffer.length() - 1;
-            QString text1;
-            while (i >= 0
-                   && buffer[i] != '+'
-                   && buffer[i] != '-'
-                   && buffer[i] != '*'
-                   && buffer[i] != '/'
-                   && buffer[i] != '^'
-                   && buffer[i] != 'r')
+                text1.resize(text.length());
+                for (i = 0; i < text.length(); i++)
                 {
-                    text += buffer[i];
-                    temp.resize(temp.length() - 1);
-                    i--;
+                    text1[text1.length() - 1 - i] = text[i];
                 }
-            text1.resize(text.length());
-            for (i = 0; i < text.length(); i++)
-            {
-                text1[text1.length() - 1 - i] = text[i];
+                ui->expression->setText(temp + "log<sub>" + text1 + "</sub>");
+                buffer = buffer + "log";
+                break;
             }
-            ui->expression->setText(temp + "log<sub>" + text1 + "</sub>");
-            buffer = buffer + "log";
-            break;
         }
-
     }
-    if (action != "=" && action != "r" && action != "g")
+    if (action != "=" && action != "r" && action != "g" && action != "C")
     {
         if (action == "⌫")
         {
@@ -548,57 +559,54 @@ void MainWindow::write(QString action)
         }
         else
         {
-            if (action == "C")
+            if (bracketstatus) powstatus = true;
+            if (powstatus == true)
             {
-                buffer = "";
-                ui->expression->setText("");
-                history.push_back("");
-                texthistory.push_back("");
-                undostep++;
-                powstatus = false;
+                if (action != "^")
+                {
+                    if(action == '(')
+                    {
+                        bracketstatus = true;
+                    }
+                    if(action == ')')
+                    {
+                        bracketstatus = false;
+                    }
+                    buffer += action;
+                    ui->expression->setText(ui->expression->text() + "<sup>" + action + "</sup>");
+                }
+                else if (buffer.length() > 0 && buffer[buffer.length() - 1] != '^') buffer += action;
             }
             else
             {
-                if (bracketstatus) powstatus = true;
-                if (powstatus == true)
+                if (action == "*")
                 {
-                    if (action != "^")
-                    {
-                        if(action == '(')
-                        {
-                            bracketstatus = true;
-                        }
-                        if(action == ')')
-                        {
-                            bracketstatus = false;
-                        }
-                        buffer += action;
-                        ui->expression->setText(ui->expression->text() + "<sup>" + action + "</sup>");
-                    }
-                    else buffer += action;
-                }
-                else
-                {
-                    if (action == "*")
+                    if (buffer.length() > 0)
                     {
                         buffer = buffer + "*";
                         ui->expression->setText(ui->expression->text() + "×");
                     }
-                    else
+                }
+                else
+                {
+                    if (action == "/")
                     {
-                        if (action == "/")
+                        if (buffer.length() > 0)
                         {
                             buffer = buffer + "/";
                             ui->expression->setText(ui->expression->text() + "÷");
                         }
+                    }
+                    else
+                    {
+                        if (action == "(" || action == ")" || action == "-")
+                        {
+                            buffer = buffer + action;
+                            ui->expression->setText(ui->expression->text() + action);
+                        }
                         else
                         {
-                            if (action == "(" || action == ")" || action == "-")
-                            {
-                                buffer = buffer + action;
-                                ui->expression->setText(ui->expression->text() + action);
-                            }
-                            else
+                            if (action != "^")
                             {
                                 buffer = buffer + action;
                                 ui->expression->setText(ui->expression->text() + action);
