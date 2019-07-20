@@ -1,4 +1,5 @@
-﻿berry&creme calc! oh, so sweet o_o 
+berry&creme calc! oh, so sweet o_o
+ 
 here are some screenshots of themes and features:
 
 ![Screenshot](https://i.imgur.com/jL6Fo63.jpg)

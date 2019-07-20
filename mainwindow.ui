@@ -460,9 +460,9 @@ QPushButton:pressed {
    <widget class="QPushButton" name="bteq">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>50</x>
       <y>220</y>
-      <width>119</width>
+      <width>79</width>
       <height>39</height>
      </rect>
     </property>
@@ -886,7 +886,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>180</y>
+      <y>60</y>
       <width>39</width>
       <height>39</height>
      </rect>
@@ -900,6 +900,9 @@ QPushButton:pressed {
       <underline>false</underline>
       <strikeout>false</strikeout>
      </font>
+    </property>
+    <property name="whatsThis">
+     <string>click to clear!</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
@@ -1248,7 +1251,7 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>60</y>
+      <y>220</y>
       <width>39</width>
       <height>39</height>
      </rect>
@@ -1262,6 +1265,9 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
       <underline>false</underline>
       <strikeout>false</strikeout>
      </font>
+    </property>
+    <property name="whatsThis">
+     <string>save your result!</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
@@ -1286,7 +1292,7 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>100</y>
+      <y>180</y>
       <width>39</width>
       <height>39</height>
      </rect>
@@ -1300,6 +1306,9 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
       <underline>false</underline>
       <strikeout>false</strikeout>
      </font>
+    </property>
+    <property name="whatsThis">
+     <string>get your saved result back to expression!</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
@@ -1324,7 +1333,7 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>140</y>
+      <y>100</y>
       <width>39</width>
       <height>39</height>
      </rect>
@@ -1338,6 +1347,9 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
       <underline>false</underline>
       <strikeout>false</strikeout>
      </font>
+    </property>
+    <property name="whatsThis">
+     <string>clear svaed result!</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
@@ -1381,6 +1393,9 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
       <bold>true</bold>
      </font>
     </property>
+    <property name="whatsThis">
+     <string>your expression!</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QLabel
 {
@@ -1416,6 +1431,9 @@ padding-left: 10px;
       <underline>false</underline>
       <strikeout>false</strikeout>
      </font>
+    </property>
+    <property name="whatsThis">
+     <string>backspace</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
@@ -1454,6 +1472,9 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
       <underline>false</underline>
       <strikeout>false</strikeout>
      </font>
+    </property>
+    <property name="whatsThis">
+     <string>square root</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton 
@@ -1714,6 +1735,9 @@ QPushButton:pressed {
       <height>39</height>
      </rect>
     </property>
+    <property name="whatsThis">
+     <string>undo</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
 	background-color:#91835a;
@@ -1741,6 +1765,9 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
       <width>39</width>
       <height>39</height>
      </rect>
+    </property>
+    <property name="whatsThis">
+     <string>redo</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
@@ -1774,6 +1801,9 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
      <string>degrees? or radians?
 which type do you prefer?</string>
     </property>
+    <property name="whatsThis">
+     <string>click to change degrees to radians</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
 	background-color:#91835a;
@@ -1804,6 +1834,9 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="toolTip">
      <string>change that theme!</string>
+    </property>
+    <property name="whatsThis">
+     <string>click to change color theme!</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
@@ -1927,6 +1960,34 @@ QPushButton:pressed{background-color: #ccc2a6;}</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btmpl">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>140</y>
+      <width>39</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	background-color:#91835a;
+	border-radius:16px;
+	border:2px solid #333029;
+	color:#25261f;
+	font-family:Trebuchet MS;
+	font-size:16px;
+	font-weight:bold;
+}
+QPushButton:hover {
+	background-color:#a89a6f;
+}
+QPushButton:pressed{background-color: #ccc2a6;}</string>
+    </property>
+    <property name="text">
+     <string>M+</string>
     </property>
    </widget>
   </widget>

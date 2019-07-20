@@ -9,7 +9,6 @@
 #include <QKeyEvent>
 #include <QLabel>
 #include <QDebug>
-#include <QtGui>
 
 using namespace std;
 
@@ -25,14 +24,14 @@ void errorwindow();
 static QStack <double> digitstack; //стек чисел
 static QStack <char> opstack; //стек операторов
 static QString buffer;
-static QString savedresult;
+static vector <string> history;
+static vector <string> texthistory;
 static bool powstatus = false;
 static bool error = false;
 static bool bracketstatus = false;
 static bool radians = false;
 static bool berrytheme = false;
-static vector <string> history;
-static vector <string> texthistory;
+static double savedresult = 0;
 static unsigned long long undostep = 0;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -42,7 +41,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
     setWindowTitle("berry&creme calc");
-    ui->expression->setToolTip("this is your expression!");
 
     connect(ui->bt0, SIGNAL(clicked()), this, SLOT(buttons()));
     connect(ui->bt1, SIGNAL(clicked()), this, SLOT(buttons()));
@@ -80,6 +78,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->btms, SIGNAL(clicked()), this, SLOT(nondefaultop()));
     connect(ui->btmr, SIGNAL(clicked()), this, SLOT(nondefaultop()));
     connect(ui->btmc, SIGNAL(clicked()), this, SLOT(nondefaultop()));
+    connect(ui->btmpl, SIGNAL(clicked()), this, SLOT(nondefaultop()));
     history.push_back("");
     texthistory.push_back("");
 }
@@ -218,10 +217,38 @@ void MainWindow::nondefaultop()
         {
             temp1[temp1.length() - 1 - i] = temp[i];
         }
-        savedresult = temp1;
+        savedresult = stod(temp1.toLocal8Bit().constData());
     }
-    if (op == "MR") write(savedresult);
-    if (op == "MC") savedresult.clear();
+    if (op == "M+")
+    {
+        int i = buffer.length() - 1;
+        QString temp;
+        while (i >= 0 && buffer[i] != '=')
+        {
+            temp[buffer.length() - 1 - i] = buffer[i];
+            i--;
+        }
+        QString temp1;
+        temp1.resize(temp.length());
+        for (i = 0; i < temp.length(); i++)
+        {
+            temp1[temp1.length() - 1 - i] = temp[i];
+        }
+        savedresult += stod(temp1.toLocal8Bit().constData());
+    }
+    if (op == "MR")
+    {
+        QString temp = QString::fromStdString(to_string(savedresult));
+        int i=temp.length() - 1;
+        while (temp[i] == '0' && i>0)
+        {
+           if (temp[i-1] == '.') temp.resize(i-1);
+            else temp.resize(i);
+           i--;
+        }
+        write(temp);
+    }
+    if (op == "MC") savedresult = 0;
 }
 
 void MainWindow::errorwindow()

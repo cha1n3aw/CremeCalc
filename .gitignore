@@ -9,6 +9,7 @@
 *.so
 *.dll
 *.dylib
+*.jpg
 
 # Qt-es
 
@@ -38,3 +39,5 @@ Makefile*
 release/
 
 debug/
+
+*.jpg
